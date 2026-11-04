@@ -41,6 +41,7 @@
   --space-6: 2rem;
   --space-7: 3rem;
   --space-8: 4rem;
+  --space-9: 2.875rem; /* 46px */
 
   /* ==== Typography ==== */
   --font-lato: "Lato", sans-serif;
