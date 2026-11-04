@@ -42,6 +42,9 @@
   --space-7: 3rem;
   --space-8: 4rem;
 
+  /* Header */
+  --space-nav-gap: 30px;
+
   /* ==== Typography ==== */
   --font-lato: "Lato", sans-serif;
   --font-cabin: "Cabin", sans-serif;

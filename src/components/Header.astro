@@ -1,0 +1,89 @@
+---
+const currentPath = Astro.url.pathname;
+---
+
+<header>
+  <nav aria-label="Hovednavigation">
+    <!-- Logo -->
+    <a href="/" class="logo">
+      Ask<span>Experts</span>
+    </a>
+    <!-- Navigationslinks -->
+    <div class="nav-links">
+      <a href="/" class:list={{ active: currentPath === "/" }}> Home </a>
+
+      <a
+        href="/case-studies/taxes-and-efficiency"
+        class:list={{ active: currentPath.startsWith("/case-studies") }}
+      >
+        Case Studies
+      </a>
+
+      <a href="/team" class:list={{ active: currentPath.startsWith("/team") }}>
+        Team
+      </a>
+
+      <a href="/about" class:list={{ active: currentPath === "/about" }}>
+        About
+      </a>
+    </div>
+    <!-- Login-knap -->
+    <button type="button" class="login-button" popovertarget="login-popover">
+      Login
+    </button>
+  </nav>
+</header>
+
+<!-- Styling -->
+<style>
+  header {
+    background-color: var(--color-ui-primary);
+    padding: 38px;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    color: var(--color-on-ui-primary);
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  .logo span {
+    color: var(--color-action);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: var(--space-nav-gap);
+    align-items: center;
+  }
+
+  .nav-links a {
+    color: var(--color-on-ui-primary);
+    font-family: var(--font-lato);
+    font-size: var(--font-size-nav);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-nav);
+    text-decoration: none;
+  }
+
+  .login-button {
+    background-color: var(--color-on-ui-primary);
+    color: var(--color-ui-primary);
+    padding: 4px 16px;
+    border: none;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+  }
+
+  .nav-links a.active {
+    text-decoration: underline;
+    text-decoration-color: var(--color-action);
+    text-underline-offset: 5px;
+  }
+</style>
