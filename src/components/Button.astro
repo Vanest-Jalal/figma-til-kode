@@ -1,0 +1,62 @@
+---
+import ArrowRight from "../icons/arrow--right.svg";
+const { href = "#", variant = "primary", showArrow = false } = Astro.props;
+---
+
+<a href={href} class={`button ${variant}`}>
+  <slot />
+  {showArrow && <ArrowRight />}
+</a>
+
+<!-- Styling  -->
+
+<style>
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-5);
+    font-family: var(--font-lato);
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+  }
+
+  /* Primary button */
+  .button.primary {
+    background-color: var(--color-action);
+    color: var(--color-text);
+  }
+
+  /* Secondary button */
+  .button.secondary {
+    background-color: transparent;
+    color: var(--color-on-ui-primary);
+    border: 1px solid var(--color-on-ui-primary);
+  }
+
+  /* Text button */
+  .button.text {
+    background-color: transparent;
+    color: var(--color-action);
+    padding: 0;
+    border-radius: 0;
+    text-decoration: underline;
+  }
+
+  /* Light button */
+  .button.light {
+    background-color: var(--color-surface-primary);
+    color: var(--color-text);
+  }
+
+  /* Styling af pil */
+  .button :global(svg) {
+    width: 16px;
+    height: auto;
+    stroke-width: 2px;
+    flex-shrink: 0;
+  }
+</style>
