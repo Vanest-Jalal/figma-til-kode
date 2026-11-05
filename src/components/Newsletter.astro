@@ -101,4 +101,25 @@
     white-space: nowrap;
     border: 0;
   }
+
+  @media (max-width: 600px) {
+    .newsletter {
+      padding: 40px 16px;
+    }
+
+    .newsletter-content h2 {
+      font-size: 1.5rem;
+    }
+
+    .newsletter form {
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .newsletter input,
+    .newsletter button {
+      width: 100%;
+      max-width: 350px;
+    }
+  }
 </style>
