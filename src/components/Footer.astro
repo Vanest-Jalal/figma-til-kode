@@ -1,0 +1,71 @@
+<footer class="footer">
+  <div class="footer-content">
+    <!-- Logo -->
+
+    <a href="/" class="footer-logo">
+      Ask<span>Experts</span>
+    </a>
+
+    <!-- Copyright -->
+    <p>©2026 Consultalk. All rights reserved</p>
+
+    <!-- Terms of Service og Privacy Policy -->
+    <div class="footer-links">
+      <span>Terms of Service</span>
+      <span>|</span>
+      <span>Privacy Policy</span>
+    </div>
+  </div>
+
+  <style>
+    .footer {
+      background-color: var(--color-ui-primary);
+      padding: var(--space-9) var(--space-6);
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      align-items: center;
+      gap: var(--space-4);
+      max-width: 75rem; /* 1200px fra Figma */
+      margin-inline: auto;
+    }
+
+    .footer-content p {
+      font-family: var(--font-lato);
+      color: var(--color-on-ui-primary-muted);
+      font-size: 0.75rem;
+      margin: 0;
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: var(--space-1);
+    }
+
+    .footer-links a,
+    .footer-links span {
+      font-family: var(--font-lato);
+      color: var(--color-on-ui-primary-muted);
+      font-size: 0.75rem;
+      text-decoration: none;
+    }
+
+    .footer-logo {
+      font-family: var(--font-cabin);
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--color-on-surface-elevated);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .footer-logo span {
+      color: var(--color-action);
+    }
+  </style>
+</footer>
