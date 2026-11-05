@@ -26,4 +26,13 @@ import Header from "../components/Header.astro";
   </body>
 </html>
 
-<style></style>
+<style>
+  .page-layout {
+    display: grid;
+    grid-template-columns:
+      [full-start] minmax(1rem, 1fr)
+      [content-start] minmax(0, 1200px)
+      [content-end] minmax(1rem, 1fr)
+      [full-end];
+  }
+</style>
