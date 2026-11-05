@@ -1,0 +1,131 @@
+<section class="newsletter">
+  <div class="newsletter-content">
+    <p class="newsletter-label">STAY UPDATED</p>
+
+    <h2>Subscribe Our Newsletter</h2>
+
+    <p class="newsletter-description">
+      Build stronger Customer Relationships with
+      <span>Consultalk</span>
+    </p>
+    <form>
+      <label for="newsletter-email">Email address</label>
+
+      <input
+        type="email"
+        id="newsletter-email"
+        name="email"
+        placeholder="Your email address"
+        required
+      />
+
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>
+</section>
+
+<style>
+  .newsletter {
+    background-color: var(--color-ui-primary);
+    padding: 60px 1rem;
+    border-bottom: 1px solid #2b3a58;
+  }
+
+  .newsletter-content {
+    max-width: 1200px;
+    margin-inline: auto;
+    text-align: center;
+    color: var(--color-on-ui-primary);
+  }
+
+  .newsletter-label {
+    color: var(--color-action);
+    font-family: var(--font-lato);
+    font-size: 0.875rem;
+    letter-spacing: 0.1em;
+  }
+
+  .newsletter-content h2 {
+    color: var(--color-on-ui-primary);
+    font-family: var(--font-cabin);
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  .newsletter-description {
+    color: var(--color-on-ui-primary-muted);
+    font-family: var(--font-lato);
+    font-size: 1rem;
+  }
+
+  .newsletter-description span {
+    color: var(--color-action);
+    font-weight: 700;
+  }
+
+  .newsletter form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 24px;
+  }
+
+  .newsletter input {
+    background-color: var(--color-ui-primary);
+    color: var(--color-on-ui-primary);
+    border: 1px solid var(--color-neutrals-400);
+    border-radius: var(--radius-pill);
+    padding: 16px 24px;
+    font-family: var(--font-lato);
+  }
+
+  .newsletter button {
+    background-color: var(--color-action);
+    color: var(--color-ui-primary);
+    border: none;
+    border-radius: var(--radius-pill);
+    padding: 16px 32px;
+    font-family: var(--font-lato);
+    cursor: pointer;
+  }
+
+  .newsletter label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  @media (max-width: 600px) {
+    .newsletter {
+      padding: 40px 16px;
+    }
+
+    .newsletter-content h2 {
+      font-size: 1.5rem;
+    }
+
+    .newsletter form {
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .newsletter input,
+    .newsletter button {
+      width: 100%;
+      max-width: 350px;
+    }
+  }
+
+  .newsletter input:focus-visible,
+  .newsletter button:focus-visible {
+    outline: 2px solid var(--color-action);
+    outline-offset: 3px;
+  }
+</style>
