@@ -34,15 +34,29 @@ import Header from "../components/Header.astro";
       [content-start] minmax(0, 1200px)
       [content-end] minmax(1rem, 1fr)
       [full-end];
+
+    width: 100%;
+    min-width: 0;
   }
 
   .page-layout > :global(*) {
     grid-column: content;
+    min-width: 0;
   }
 
   .page-layout > :global(.hero),
   .page-layout > :global(.newsletter),
   .page-layout > :global(.footer) {
     grid-column: full;
+  }
+
+  @media (max-width: 600px) {
+    .page-layout {
+      grid-template-columns:
+        [full-start] 1rem
+        [content-start] minmax(0, 1fr)
+        [content-end] 1rem
+        [full-end];
+    }
   }
 </style>
