@@ -42,25 +42,37 @@ const currentPath = Astro.url.pathname;
   }
 
   nav {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 20px;
     align-items: center;
+
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
   }
 
+  /* Logo */
   .logo {
+    justify-self: start;
     color: var(--color-on-ui-primary);
     text-decoration: none;
-    font-weight: 700;
+    font-family: var(--font-cabin);
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 1.05;
   }
 
   .logo span {
     color: var(--color-action);
   }
 
+  /* Navigation */
   .nav-links {
     display: flex;
-    gap: var(--space-nav-gap);
+    justify-self: center;
     align-items: center;
+    gap: var(--space-nav-gap);
   }
 
   .nav-links a {
@@ -72,18 +84,20 @@ const currentPath = Astro.url.pathname;
     text-decoration: none;
   }
 
+  .nav-links a.active {
+    text-decoration: underline;
+    text-decoration-color: var(--color-action);
+    text-underline-offset: 5px;
+  }
+
+  /* Login */
   .login-button {
+    justify-self: end;
     background-color: var(--color-on-ui-primary);
     color: var(--color-ui-primary);
     padding: 4px 16px;
     border: none;
     border-radius: var(--radius-pill);
     cursor: pointer;
-  }
-
-  .nav-links a.active {
-    text-decoration: underline;
-    text-decoration-color: var(--color-action);
-    text-underline-offset: 5px;
   }
 </style>
