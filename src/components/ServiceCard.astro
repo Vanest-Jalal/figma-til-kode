@@ -14,10 +14,15 @@ import Button from "./Button.astro";
 <style>
   @layer components {
     article {
-      background: var(--color-blue-700-transparent);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      padding: var(--space-6);
+      border-radius: var(--radius-lg);
+      background: var(--color-surface-elevated-transparent);
       color: var(--color-on-surface-elevated);
-      padding: 2rem; /* Dette burde være en token */
-      border-radius: 20px; /* Dette burde være en token */
+      backdrop-filter: blur(16px);
     }
   }
 </style>

@@ -7,27 +7,88 @@ import CEOImage from "@assets/images/ceo.webp";
 
 <section class="hero">
   <div class="hero-content">
-    <h1>Empowering Your Business Growth</h1>
-    <p>
-      Discover tailored strategies and expert insights to take your business to
-      the next level. Let us help you navigate challenges and achieve
-      sustainable success.
-    </p>
-    <Button href="#0" variant="primary"> Book a Meeting </Button>
+    <div class="hero-text">
+      <h1>Empowering Your Business Growth</h1>
+      <p>
+        Discover tailored strategies and expert insights to take your business
+        to the next level. Let us help you navigate challenges and achieve
+        sustainable success.
+      </p>
+    </div>
 
-    <Button href="#0" variant="secondary" showArrow={true}> Learn More </Button>
+    <!-- Knapper i Hero -->
+    <div class="hero-buttons">
+      <Button href="#0" variant="primary">Book a Meeting</Button>
+
+      <Button href="#0" variant="secondary" showArrow={true}>
+        Learn More
+      </Button>
+    </div>
   </div>
-  <Image src={CEOImage} alt="CEO" />
-
+  <Image src={CEOImage} alt="CEO" class="hero-image" />
   <Services />
 </section>
 
+<!-- Styling -->
 <style>
-  /* Styles her */
   @layer components {
     .hero {
-      background-color: #f3f4f6;
-      padding: 2rem;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      background-color: var(--color-ui-primary);
+    }
+
+    .hero > :global(.services) {
+      grid-column: 1 / -1;
+      position: relative;
+      z-index: 1;
+      margin-top: -132px;
+      transform: translateY(132px);
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: var(--space-hero-content-gap);
+      padding: var(--space-8);
+      color: var(--color-on-ui-primary);
+    }
+
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-content h1 {
+      font-family: var(--font-cabin);
+      font-size: 3.125rem; /* 50px */
+      font-weight: 700;
+      line-height: 1.16; /* 58px */
+      color: var(--color-on-ui-primary);
+      margin: 0;
+    }
+
+    .hero-content p {
+      font-family: var(--font-lato);
+      font-size: 1.125rem; /* 18px */
+      font-weight: 400;
+      line-height: 1.475;
+      color: var(--color-on-ui-primary-muted);
+      margin: 0;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-buttons {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
     }
   }
 </style>

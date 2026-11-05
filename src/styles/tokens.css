@@ -46,6 +46,9 @@
   /* Header */
   --space-nav-gap: 30px;
 
+  /* Hero */
+  --space-hero-content-gap: 1.8125rem; /* 29px */
+
   /* ==== Typography ==== */
   --font-lato: "Lato", sans-serif;
   --font-cabin: "Cabin", sans-serif;
