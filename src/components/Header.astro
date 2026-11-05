@@ -42,12 +42,15 @@ const currentPath = Astro.url.pathname;
   }
 
   nav {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
+    max-width: 1200px;
+    margin-inline: auto;
   }
 
   .logo {
+    justify-self: start;
     color: var(--color-on-ui-primary);
     text-decoration: none;
     font-weight: 700;
@@ -59,8 +62,9 @@ const currentPath = Astro.url.pathname;
 
   .nav-links {
     display: flex;
-    gap: var(--space-nav-gap);
+    justify-self: center;
     align-items: center;
+    gap: var(--space-nav-gap);
   }
 
   .nav-links a {
@@ -73,6 +77,7 @@ const currentPath = Astro.url.pathname;
   }
 
   .login-button {
+    justify-self: end;
     background-color: var(--color-on-ui-primary);
     color: var(--color-ui-primary);
     padding: 4px 16px;
