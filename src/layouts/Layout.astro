@@ -35,4 +35,12 @@ import Header from "../components/Header.astro";
       [content-end] minmax(1rem, 1fr)
       [full-end];
   }
+
+  .page-layout > :global(*) {
+    grid-column: content;
+  }
+
+  .page-layout > :global(.hero) {
+    grid-column: full;
+  }
 </style>
