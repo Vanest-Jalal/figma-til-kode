@@ -8,8 +8,9 @@ const currentPath = Astro.url.pathname;
     <a href="/" class="logo">
       Ask<span>Experts</span>
     </a>
+
     <!-- Navigationslinks -->
-    <div class="nav-links">
+    <div class="nav-links" id="mobile-menu">
       <a href="/" class:list={{ active: currentPath === "/" }}> Home </a>
 
       <a
@@ -27,9 +28,21 @@ const currentPath = Astro.url.pathname;
         About
       </a>
     </div>
+
     <!-- Login-knap -->
     <button type="button" class="login-button" popovertarget="login-popover">
       Login
+    </button>
+
+    <!-- Burgermenu -->
+    <button
+      type="button"
+      class="menu-toggle"
+      aria-label="Åbn menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      ☰
     </button>
   </nav>
 </header>
@@ -100,4 +113,66 @@ const currentPath = Astro.url.pathname;
     border-radius: var(--radius-pill);
     cursor: pointer;
   }
+
+  .menu-toggle {
+    display: none;
+  }
+
+  @media (max-width: 700px) {
+    nav {
+      grid-template-columns: 1fr auto;
+    }
+
+    .menu-toggle {
+      display: block;
+      grid-column: 2;
+      grid-row: 1;
+      background: transparent;
+      color: var(--color-on-ui-primary);
+      border: none;
+      font-size: 1.75rem;
+      cursor: pointer;
+    }
+
+    .nav-links,
+    .login-button {
+      display: none;
+    }
+
+    .nav-links.is-open {
+      display: flex;
+      flex-direction: column;
+      grid-column: 1 / -1;
+      grid-row: 2;
+      align-items: flex-start;
+      justify-self: stretch;
+      gap: 20px;
+      padding-block: 20px;
+    }
+
+    /* Vis Login-knappen når menuen er åben */
+    .login-button.is-open {
+      display: block;
+      grid-column: 1 / -1;
+      grid-row: 3;
+      justify-self: start;
+    }
+  }
 </style>
+
+<script>
+  const menuToggle = document.querySelector(".menu-toggle");
+  const mobileMenu = document.querySelector("#mobile-menu");
+  const loginButton = document.querySelector(".login-button");
+
+  menuToggle?.addEventListener("click", () => {
+    const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+
+    menuToggle.setAttribute("aria-expanded", String(!isOpen));
+    menuToggle.textContent = isOpen ? "☰" : "×";
+    menuToggle.setAttribute("aria-label", isOpen ? "Åbn menu" : "Luk menu");
+
+    mobileMenu?.classList.toggle("is-open", !isOpen);
+    loginButton?.classList.toggle("is-open", !isOpen);
+  });
+</script>
