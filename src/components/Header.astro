@@ -45,6 +45,20 @@ const currentPath = Astro.url.pathname;
       ☰
     </button>
   </nav>
+  <!-- Login-popover -->
+  <div id="login-popover" popover>
+    <h2>Login</h2>
+
+    <form>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required />
+
+      <button type="submit">Login</button>
+    </form>
+  </div>
 </header>
 
 <!-- Styling -->
@@ -116,6 +130,45 @@ const currentPath = Astro.url.pathname;
 
   .menu-toggle {
     display: none;
+  }
+
+  /* Login-popover */
+  #login-popover {
+    width: min(90vw, 400px);
+    padding: var(--space-5);
+    border: none;
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface-primary);
+    color: var(--color-text);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    margin: auto;
+  }
+
+  #login-popover h2 {
+    font-size: 24px;
+    margin-bottom: var(--space-5);
+  }
+
+  #login-popover form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  #login-popover input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--color-surface-tertiary);
+    border-radius: var(--radius-sm);
+  }
+
+  #login-popover button {
+    background-color: var(--color-action);
+    color: var(--color-ui-primary);
+    padding: var(--space-3);
+    border: none;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
   }
 
   @media (max-width: 700px) {
