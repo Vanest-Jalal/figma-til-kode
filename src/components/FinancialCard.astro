@@ -1,0 +1,69 @@
+---
+import Cal from "../icons/cal.svg";
+import Card from "../icons/card.svg";
+import Law from "../icons/law.svg";
+import Money from "../icons/money.svg";
+import Gear from "../icons/gear.svg";
+import Bars from "../icons/bars.svg";
+import Clock from "../icons/clock.svg";
+
+// Modtager data for ét kort fra FinancialProjections
+const { item } = Astro.props;
+
+// Finder det rigtige SVG-ikon fra API'ets ikonnavn
+const icons = {
+  cal: Cal,
+  card: Card,
+  law: Law,
+  money: Money,
+  gear: Gear,
+  bars: Bars,
+  clock: Clock,
+};
+// Finder det rigtige ikon ud fra API'et
+const Icon = Object.entries(icons).find(([name]) => name === item.icon)?.[1];
+---
+
+<article class="financial-card">
+  {Icon && <Icon />}
+  <h3>{item.title}</h3>
+  <p>{item.description}</p>
+</article>
+
+<!-- Styling -->
+
+<style>
+  /* Sektionens overskrift */
+  .financial-projections h2 {
+    font-family: var(--font-cabin);
+    font-size: 2.8125rem; /* 45px */
+    font-weight: 700;
+    line-height: 1.16;
+    color: var(--color-text);
+    margin: 0;
+  }
+
+  /* Styling af de enkelte finansielle kort */
+  .financial-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+    padding: var(--space-5);
+    background-color: var(--color-surface-tertiary);
+    border-radius: var(--radius-md);
+  }
+
+  /* Kortets overskrift */
+  .financial-card h3 {
+    font-family: var(--font-cabin);
+    color: var(--color-text);
+    margin: 0;
+  }
+
+  /* Kortets beskrivelse */
+  .financial-card p {
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+</style>

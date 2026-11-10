@@ -1,0 +1,61 @@
+---
+// @ts-nocheck
+import FinancialCard from "./FinancialCard.astro";
+
+// Henter indholdet til sektionen fra API'et
+const financialData = await fetch(
+  "https://ftk-api.pages.dev/financial-projections",
+).then((res) => res.json());
+---
+
+<section class="financial-projections">
+  <span>{financialData.eyebrow}</span>
+  <h2>{financialData.title}</h2>
+  <p>{financialData.subtitle}</p>
+
+  <!-- Viser de første fire kort fra API'et -->
+  <div class="financial-cards">
+    {
+      financialData.values
+        .slice(0, 4)
+        .map((item) => <FinancialCard item={item} />)
+    }
+  </div>
+</section>
+
+<!-- Styling -->
+
+<style>
+  /* Sektionens baggrund og afstand */
+  .financial-projections {
+    background-color: var(--color-surface-secondary);
+    padding: var(--space-8);
+  }
+
+  /* Overskrift */
+  .financial-projections h2 {
+    font-family: var(--font-cabin);
+    font-size: 2.8125rem; /* 45px */
+    font-weight: 700;
+    line-height: 1.16;
+    color: var(--color-text);
+    margin: 0;
+  }
+
+  /* Beskrivelsen under overskriften */
+  .financial-projections p {
+    font-family: var(--font-lato);
+    font-size: 1.125rem; /* 18px */
+    line-height: 1.475;
+    color: var(--color-text-muted);
+    max-width: 645px;
+  }
+
+  /* De fire kort placeres ved siden af hinanden */
+  .financial-cards {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-5);
+    margin-top: var(--space-8);
+  }
+</style>
