@@ -1,6 +1,8 @@
 ---
 // @ts-nocheck
 import FinancialCard from "./FinancialCard.astro";
+import ArrowLeft from "../icons/arrow-left.svg";
+import ArrowRight from "../icons/arrow--right.svg";
 
 // Henter indholdet til sektionen fra API'et
 const financialData = await fetch(
@@ -9,33 +11,100 @@ const financialData = await fetch(
 ---
 
 <section class="financial-projections">
-  <span>{financialData.eyebrow}</span>
-  <h2>{financialData.title}</h2>
-  <p>{financialData.subtitle}</p>
+  <!-- Holder indholdet centreret, mens baggrunden fylder hele bredden -->
+  <div class="financial-content">
+    <!-- Placerer tekst og navigationspile ved siden af hinanden -->
+    <div class="financial-header">
+      <div class="financial-text">
+        <span>{financialData.eyebrow}</span>
+        <h2>{financialData.title}</h2>
+        <p>{financialData.subtitle}</p>
+      </div>
 
-  <!-- Viser de første fire kort fra API'et -->
-  <div class="financial-cards">
-    {
-      financialData.values
-        .slice(0, 4)
-        .map((item) => <FinancialCard item={item} />)
-    }
+      <div class="financial-navigation">
+        <button type="button" class="prev" aria-label="Forrige kort">
+          <ArrowLeft />
+        </button>
+
+        <button type="button" class="next" aria-label="Næste kort">
+          <ArrowRight />
+        </button>
+      </div>
+    </div>
+
+    <!-- Viser alle kort fra API'et i en vandret slider -->
+    <div class="financial-slider">
+      <div class="financial-cards">
+        {financialData.values.map((item) => <FinancialCard item={item} />)}
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- Styling -->
+<script>
+  // @ts-nocheck
+
+  // Finder kortene, knapperne og sliderens container
+  const cards = document.querySelectorAll(".financial-cards > *");
+  const nextButton = document.querySelector(".next");
+  const prevButton = document.querySelector(".prev");
+  const cardsContainer = document.querySelector(".financial-cards");
+
+  // Holder styr på det første synlige kort
+  let currentIndex = 0;
+
+  // Flytter kortene vandret, når brugeren klikker på pilene
+  function showCards() {
+    if (!cardsContainer || !cards[0]) return;
+
+    const gap = parseFloat(getComputedStyle(cardsContainer).columnGap);
+    const cardWidth = cards[0].getBoundingClientRect().width;
+
+    cardsContainer.style.transform = `translateX(-${currentIndex * (cardWidth + gap)}px)`;
+  }
+
+  // Bladrer frem til næste kort
+  nextButton?.addEventListener("click", () => {
+    if (currentIndex < cards.length - 4) {
+      currentIndex++;
+      showCards();
+    }
+  });
+
+  // Bladrer tilbage til forrige kort
+  prevButton?.addEventListener("click", () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      showCards();
+    }
+  });
+
+  // Viser de første fire kort, når siden indlæses
+  showCards();
+</script>
 
 <style>
-  /* Sektionens baggrund og afstand */
+  /* Sektionens baggrund fylder hele skærmens bredde */
   .financial-projections {
     background-color: var(--color-surface-secondary);
     padding: var(--space-8);
+    box-sizing: border-box;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    margin-left: -50vw;
+  }
+
+  /* Centrerer indholdet inden for sektionen */
+  .financial-content {
+    max-width: 1200px;
+    margin-inline: auto;
   }
 
   /* Overskrift */
   .financial-projections h2 {
     font-family: var(--font-cabin);
-    font-size: 2.8125rem; /* 45px */
+    font-size: 2.8125rem;
     font-weight: 700;
     line-height: 1.16;
     color: var(--color-text);
@@ -45,17 +114,60 @@ const financialData = await fetch(
   /* Beskrivelsen under overskriften */
   .financial-projections p {
     font-family: var(--font-lato);
-    font-size: 1.125rem; /* 18px */
+    font-size: 1.125rem;
     line-height: 1.475;
     color: var(--color-text-muted);
     max-width: 645px;
   }
 
-  /* De fire kort placeres ved siden af hinanden */
+  /* Placerer kortene på én række med glidende animation */
   .financial-cards {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% - 3 * var(--space-5)) / 4);
     gap: var(--space-5);
     margin-top: var(--space-8);
+    transition: transform 0.4s ease;
+  }
+
+  /* Navigationsknapperne */
+  .financial-navigation {
+    display: flex;
+    gap: var(--space-2);
+  }
+
+  .financial-navigation button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--color-neutrals-900);
+    color: white;
+    cursor: pointer;
+  }
+
+  .financial-navigation button svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Placerer tekst og navigationspile ved siden af hinanden */
+  .financial-header {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--space-9);
+  }
+
+  /* Bestemmer bredden på tekstområdet */
+  .financial-text {
+    flex: 0 1 645px;
+  }
+
+  /* Skjuler kortene uden for sliderens synlige område */
+  .financial-slider {
+    overflow: hidden;
   }
 </style>
