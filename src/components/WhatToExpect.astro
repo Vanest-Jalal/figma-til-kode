@@ -1,0 +1,94 @@
+---
+// Importerer Astros billedkomponent
+import { Image } from "astro:assets";
+
+// Importerer billede og ikon til sektionen
+import ExpectImage from "../assets/images/what-to-expect.png";
+import Checkmark from "../icons/checkmark.svg";
+---
+
+<section class="what-to-expect">
+  <!-- Billede fra Figma -->
+  <div class="expect-image">
+    <Image src={ExpectImage} alt="Tre kollegaer samarbejder omkring et bord" />
+  </div>
+
+  <div class="expect-content">
+    <span>WE'LL WORK WITH YOU</span>
+
+    <h2>What To Expect</h2>
+
+    <p>
+      Our collaboration is built on transparency, efficiency, and measurable
+      results. Together, we create strategies tailored to your unique needs and
+      goals.
+    </p>
+
+    <ul>
+      <li>
+        <Checkmark />
+        Collaborate to build actionable strategies that drive sustainable growth and
+        deliver tangible outcomes.
+      </li>
+      <li>
+        <Checkmark />
+        Identify opportunities to optimize processes and implement impactful solutions
+        with measurable results.
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- Styling  -->
+<style>
+  /* Layout for billede og tekst */
+  .what-to-expect {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: var(--space-8);
+  }
+
+  /* Container til billede og grøn dekoration */
+  .expect-image {
+    position: relative;
+  }
+
+  /* Grøn dekoration bag billedet */
+  .expect-image::before {
+    content: "";
+    position: absolute;
+    width: 183px;
+    height: 164px;
+    background-color: var(--color-ui-secondary);
+    border-radius: var(--radius-lg);
+    top: -24px;
+    left: -24px;
+    z-index: 0;
+  }
+
+  /* Billedet placeres foran den grønne dekoration */
+  .expect-image :global(img) {
+    display: block;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-md);
+  }
+
+  /* Liste med fordele */
+  .expect-content ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  /* Placerer checkmark ved siden af teksten */
+  .expect-content li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+</style>

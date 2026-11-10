@@ -36,6 +36,8 @@ import CEOImage from "@assets/images/ceo.webp";
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       background-color: var(--color-ui-primary);
+      /* Giver plads til service-kortenes overlap og afstand til næste sektion */
+      margin-bottom: calc(132px + var(--space-8));
     }
 
     .hero > :global(.services) {
