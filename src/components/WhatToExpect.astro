@@ -41,12 +41,29 @@ import Checkmark from "../icons/checkmark.svg";
 
 <!-- Styling  -->
 <style>
+  /* Overskrift fra Figma */
+  .expect-content h2 {
+    font-family: var(--font-cabin);
+    font-size: 2.8125rem; /* 45px */
+    font-weight: 700;
+    line-height: 1.16;
+    color: var(--color-ui-primary);
+    margin: 0;
+  }
   /* Layout for billede og tekst */
   .what-to-expect {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
     gap: var(--space-8);
+  }
+
+  /* Vertikal afstand mellem tekstens elementer */
+  .expect-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
   }
 
   /* Container til billede og grøn dekoration */
@@ -90,5 +107,10 @@ import Checkmark from "../icons/checkmark.svg";
     display: flex;
     align-items: flex-start;
     gap: var(--space-3);
+  }
+
+  /* Grøn farve på SVG-checkmarks */
+  .expect-content li :global(svg) {
+    color: var(--color-ui-secondary-alternative);
   }
 </style>
