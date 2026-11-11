@@ -1,0 +1,103 @@
+---
+import Button from "./Button.astro";
+---
+
+<!-- Newsletter-sektion -->
+<section class="newsletter">
+  <div class="newsletter-content">
+    <span class="newsletter-label">Stay Updated</span>
+    <h2>Subscribe Our Newsletter</h2>
+    <p>
+      Build stronger Customer Relationships with <strong>Consultalk</strong>
+    </p>
+
+    <!-- E-mailfelt og Subscribe-knap -->
+    <form class="newsletter-form">
+      <input
+        type="email"
+        name="email"
+        class="newsletter-input"
+        placeholder="Your mail address"
+        aria-label="Email address"
+        required
+      />
+      <!-- Genbruger Button-komponenten til Subscribe -->
+      <Button variant="primary">Subscribe</Button>
+    </form>
+  </div>
+</section>
+
+<!-- Styling -->
+<style>
+  /* Newsletter-sektionens baggrund og afstande */
+  .newsletter {
+    background-color: var(--color-ui-primary);
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    margin-left: -50vw;
+    box-sizing: border-box;
+    padding: var(--space-8) var(--space-5);
+    text-align: center;
+    border-bottom: 1px solid var(--color-blue-600);
+  }
+
+  /* Centrerer indholdet */
+  .newsletter-content {
+    max-width: 1200px;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  /* Lille overskrift */
+  .newsletter-label {
+    font-family: var(--font-lato);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.475;
+    letter-spacing: 0.145em;
+    text-transform: uppercase;
+    color: var(--color-action);
+  }
+
+  /* Hovedoverskrift */
+  .newsletter h2 {
+    font-family: var(--font-cabin);
+    font-size: 2.1875rem;
+    font-weight: 700;
+    line-height: 1.16;
+    color: var(--color-on-ui-primary);
+  }
+
+  /* Beskrivelse */
+  .newsletter p {
+    font-family: var(--font-lato);
+    font-size: 1rem;
+    line-height: 1.475;
+    color: var(--color-on-ui-primary-muted);
+  }
+
+  /* Fremhævet tekst */
+  .newsletter p strong {
+    color: var(--color-action);
+    font-weight: 700;
+  }
+
+  /* Afstand mellem teksten og formularen */
+  .newsletter-form {
+    margin-top: var(--space-3);
+  }
+
+  /* Styling af e-mailfeltet */
+  .newsletter-input {
+    background-color: var(--color-neutrals-900);
+    border: 1px solid var(--color-neutrals-400);
+    border-radius: var(--radius-pill);
+    padding: var(--space-3) var(--space-5);
+    color: var(--color-on-ui-primary);
+    font-family: var(--font-lato);
+  }
+</style>

@@ -1,17 +1,20 @@
 ---
 import ArrowRight from "../icons/arrow--right.svg";
-const { href = "#", variant = "primary", showArrow = false } = Astro.props;
+
+// Henter knappens variant og bestemmer, om pilen skal vises
+const { variant = "primary", showArrow = false } = Astro.props;
 ---
 
-<a href={href} class={`button ${variant}`}>
+<button type="button" class={`button ${variant}`}>
   <slot />
   {showArrow && <ArrowRight />}
-</a>
+</button>
 
 <!-- Styling  -->
 
 <style>
   .button {
+    /* Fælles styling til både links og knapper */
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -19,7 +22,9 @@ const { href = "#", variant = "primary", showArrow = false } = Astro.props;
     padding: var(--space-3) var(--space-5);
     font-family: var(--font-lato);
     font-weight: 700;
+    font-size: inherit;
     text-decoration: none;
+    border: none;
     border-radius: var(--radius-pill);
     cursor: pointer;
   }
