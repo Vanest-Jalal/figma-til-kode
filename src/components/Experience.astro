@@ -1,0 +1,45 @@
+<!-- Experience-sektionen med tekst og statistik -->
+<section class="experience">
+  <div class="experience-content">
+    <!-- Sektionens overskrift og beskrivelse -->
+    <div class="experience-text">
+      <span>Experience</span>
+      <h2>More than 25 years of experience</h2>
+      <p>3000+ our clients are insured around the World</p>
+    </div>
+
+    <!-- Her skal de tre procentcirkler placeres -->
+    <div class="experience-stats"></div>
+  </div>
+</section>
+
+<!-- Styling -->
+<style>
+  /* Sektionens gule baggrund og afstand */
+  .experience {
+    /* Centrerer indholdet lodret i sektionen */
+    display: flex;
+    align-items: center;
+    /* Holder indholdet centreret lodret, men placeret mod venstre */
+    justify-content: flex-start;
+    background-color: var(--color-surface-highlight);
+    padding: var(--space-9);
+    width: 100vw;
+    min-height: 528px;
+    position: relative;
+    left: 50%;
+    margin-left: -50vw;
+    box-sizing: border-box;
+  }
+
+  /* Centrerer indholdet */
+  .experience-content {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-6);
+  }
+</style>
