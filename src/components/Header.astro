@@ -46,19 +46,19 @@ const currentPath = Astro.url.pathname;
     </button>
   </nav>
   <!-- Login-popover -->
-  <div id="login-popover" popover>
-    <h2>Login</h2>
+<div id="login-popover" popover>
+  <h2>Dashboard Login</h2>
 
-    <form>
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required />
+  <form id="login-form">
+    <label for="email">Email address</label>
+    <input type="email" id="email" name="email" required />
 
-      <label for="password">Password</label>
-      <input type="password" id="password" name="password" required />
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" required />
 
-      <button type="submit">Login</button>
-    </form>
-  </div>
+    <button type="submit">Go to dashboard</button>
+  </form>
+</div>
 </header>
 
 <!-- Styling -->
@@ -133,43 +133,72 @@ const currentPath = Astro.url.pathname;
   }
 
   /* Login-popover */
-  #login-popover {
-    width: min(90vw, 400px);
-    padding: var(--space-5);
-    border: none;
-    border-radius: var(--radius-md);
-    background-color: var(--color-surface-primary);
-    color: var(--color-text);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-    margin: auto;
-  }
+#login-popover {
+  position: fixed;
+  inset: auto;
+  top: 105px;
+  right: max(38px, calc((100vw - 1200px) / 2));
+  left: auto;
 
-  #login-popover h2 {
-    font-size: 24px;
-    margin-bottom: var(--space-5);
-  }
+  width: min(90vw, 400px);
+  padding: var(--space-5);
+  margin: 0;
+  border: none;
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface-primary);
+  color: var(--color-text);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
 
-  #login-popover form {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-  }
+/* Lille trekant, der peger op mod Login */
+#login-popover::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  right: 30px;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid var(--color-surface-primary);
+}
 
-  #login-popover input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid var(--color-surface-tertiary);
-    border-radius: var(--radius-sm);
-  }
+#login-popover h2 {
+  font-family: var(--font-cabin);
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: var(--space-5);
+}
 
-  #login-popover button {
-    background-color: var(--color-action);
-    color: var(--color-ui-primary);
-    padding: var(--space-3);
-    border: none;
-    border-radius: var(--radius-pill);
-    cursor: pointer;
-  }
+#login-popover form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+#login-popover label {
+  font-family: var(--font-lato);
+  font-size: 14px;
+}
+
+#login-popover input {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid var(--color-surface-tertiary);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-surface-primary);
+}
+
+#login-popover button {
+  width: 100%;
+  margin-top: var(--space-3);
+  padding: 14px;
+  border: none;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-action);
+  color: var(--color-text);
+  font-family: var(--font-lato);
+  font-weight: 600;
+  cursor: pointer;
+}
 
   @media (max-width: 700px) {
     nav {
