@@ -1,0 +1,131 @@
+---
+// Modtager procenttal og tekst fra StatList-komponenten
+const { label, value } = Astro.props;
+---
+
+<!-- Viser en procentcirkel med tilhørende tekst -->
+<figure data-value={value}>
+  <svg viewBox="0 0 100 100">
+    <!-- Cirklens baggrund -->
+    <circle class="track"></circle>
+
+    <!-- Den del af cirklen, der viser procenten -->
+    <circle class="progress" pathLength="100"></circle>
+
+    <!-- Markering på cirklen -->
+    <circle class="marker" r="4"></circle>
+  </svg>
+
+  <figcaption>{label}</figcaption>
+</figure>
+
+<!-- Styling -->
+<style>
+  /* Procentcirklens størrelse og placering */
+  figure {
+    flex: 0 0 150px; /* Hver cirkel får en fast bredde på 150px */
+    --value-string: attr(data-value);
+    display: grid;
+    grid: "stack";
+    place-items: center;
+    container: stat / inline-size;
+  }
+
+  /* Viser procenttallet i midten af cirklen */
+  figure::after {
+    content: var(--value-string) "%";
+    grid-area: stack;
+    font-size: 30cqw;
+    font-weight: 700;
+  }
+
+  /* Placerer SVG-cirklen og drejer startpunktet */
+  svg {
+    grid-area: stack;
+    rotate: z -90deg;
+  }
+
+  /* Cirklens baggrund */
+  .track {
+    stroke: var(--color-yellow-700);
+  }
+
+  /* Fælles styling for cirklerne */
+  .track,
+  .progress {
+    cx: 50;
+    cy: 50;
+    r: 46;
+    fill: none;
+    stroke-width: 4;
+  }
+
+  /* Viser hvor stor en procentdel cirklen er fyldt */
+  .progress {
+    stroke: var(--color-surface-primary);
+    stroke-dasharray: 100.1;
+    stroke-dashoffset: 100;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 1.5s ease;
+  }
+
+  /* Markering på cirklen */
+  .marker {
+    fill: var(--color-ui-primary);
+    offset-path: circle(46px at 50px 50px);
+    /* Prikken starter ved 0 % og animeres med JavaScript */
+    offset-distance: 0%;
+    transition: offset-distance 1.5s ease;
+  }
+
+  /* Teksten under procentcirklerne */
+  figcaption {
+    font-family: var(--font-cabin);
+    font-size: 1.5625rem; /* 25px fra Figma */
+    font-weight: 600;
+    line-height: 1.16;
+    color: var(--color-text);
+    text-align: center;
+  }
+</style>
+
+<!-- Animation til Doughnut Charts -->
+<script>
+  // Finder alle procentcirklerne
+  const circles = document.querySelectorAll("figure[data-value]");
+
+  // Holder øje med, hvornår cirklerne bliver synlige
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        // Henter procenttallet fra data-value
+        const value = entry.target.getAttribute("data-value");
+
+        // Finder procentlinjen inde i cirklen
+        const progress = entry.target.querySelector(".progress");
+
+        // Finder den sorte prik på cirklen
+        const marker = entry.target.querySelector(".marker");
+
+        if (progress instanceof SVGElement) {
+          // Venter lidt, så browseren kan vise startpositionen
+          setTimeout(() => {
+            // Animerer den hvide streg
+            progress.style.strokeDashoffset = String(100 - Number(value));
+
+            // Animerer den sorte prik samtidig
+            if (marker instanceof SVGElement) {
+              marker.style.offsetDistance = `${value}%`;
+            }
+          }, 100);
+        }
+
+        // Stopper med at observere, når animationen er startet
+        observer.unobserve(entry.target);
+      }
+    });
+  });
+
+  // Starter med at holde øje med alle cirklerne
+  circles.forEach((circle) => observer.observe(circle));
+</script>

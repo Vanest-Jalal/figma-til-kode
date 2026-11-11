@@ -13,6 +13,7 @@
   --color-neutrals-100: #f9fafb;
   --color-neutrals-400: #99a1af;
   --color-yellow-600: #fbc336;
+  --color-yellow-700: #daae3c;
 
   /* TOKENS */
   --color-action: var(--color-yellow-500);

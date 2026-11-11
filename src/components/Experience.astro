@@ -1,3 +1,11 @@
+---
+// Importerer statistikken fra den eksisterende JSON-fil
+import experienceData from "../data/experience.json";
+
+// Importerer komponenten med procentcirklerne
+import StatList from "./StatList.astro";
+---
+
 <!-- Experience-sektionen med tekst og statistik -->
 <section class="experience">
   <div class="experience-content">
@@ -8,20 +16,19 @@
       <p>3000+ our clients are insured around the World</p>
     </div>
 
-    <!-- Her skal de tre procentcirkler placeres -->
-    <div class="experience-stats"></div>
+    <!-- Viser de tre procentcirkler fra experience.json -->
+    <div class="experience-stats">
+      <StatList stats={experienceData.stats} />
+    </div>
   </div>
 </section>
 
 <!-- Styling -->
 <style>
-  /* Sektionens gule baggrund og afstand */
+  /* Sektionens gule baggrund */
   .experience {
-    /* Centrerer indholdet lodret i sektionen */
     display: flex;
     align-items: center;
-    /* Holder indholdet centreret lodret, men placeret mod venstre */
-    justify-content: flex-start;
     background-color: var(--color-surface-highlight);
     padding: var(--space-9);
     width: 100vw;
@@ -32,7 +39,7 @@
     box-sizing: border-box;
   }
 
-  /* Centrerer indholdet */
+  /* Placerer tekst og procentcirkler ved siden af hinanden */
   .experience-content {
     width: 100%;
     max-width: 1200px;
@@ -41,5 +48,32 @@
     align-items: center;
     justify-content: space-between;
     gap: var(--space-6);
+  }
+
+  /* Lille overskrift */
+  .experience-text span {
+    display: block;
+    font-family: var(--font-lato);
+    font-size: 1rem;
+    letter-spacing: 0.145em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-2);
+  }
+
+  /* Hovedoverskrift */
+  .experience-text h2 {
+    font-family: var(--font-cabin);
+    font-size: 2.8125rem;
+    font-weight: 700;
+    line-height: 1.16;
+    max-width: 373px;
+    margin-bottom: var(--space-4);
+  }
+
+  /* Beskrivelse */
+  .experience-text p {
+    font-family: var(--font-lato);
+    font-size: 1rem;
+    margin: 0;
   }
 </style>
