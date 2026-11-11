@@ -127,6 +127,7 @@ const currentPath = Astro.url.pathname;
     border: none;
     border-radius: var(--radius-pill);
     cursor: pointer;
+    anchor-name: --login-anchor;
   }
 
   .menu-toggle {
@@ -135,16 +136,15 @@ const currentPath = Astro.url.pathname;
 
   /* Login-popover */
 #login-popover {
-  position: fixed;
-  inset: auto;
-  top: 105px;
-  right: max(38px, calc((100vw - 1200px) / 2));
-  left: auto;
+   position: fixed;
+  position-anchor: --login-anchor;
+  position-area: bottom span-left;
+    margin-top: 12px;
   overflow: visible;
 
   width: min(90vw, 320px);
   padding: var(--space-5);
-  margin: 0;
+  
   border: none;
   border-radius: var(--radius-md);
   background-color: var(--color-surface-primary);
@@ -244,11 +244,16 @@ const currentPath = Astro.url.pathname;
 
     /* Login-popover på mobil */
 #login-popover {
+  position-anchor: auto;
+  position-area: none;
+
+  inset: auto;
   top: 100px;
   left: 50%;
-  right: auto;
   transform: translateX(-50%);
+
   width: min(90vw, 320px);
+  margin: 0;
 }
 
 #login-popover .popover-arrow {
