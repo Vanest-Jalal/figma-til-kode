@@ -1,8 +1,10 @@
 :root {
   /* ==== Colors ==== */
   /* PRIMITIVES */
+  --color-yellow-100: #ffeccb;
   --color-yellow-500: #ffcc4a;
   --color-green-400: #a4eda4;
+  --color-green-500: #4eaf4e;
   --color-neutrals-50: #f9fafb;
   --color-neutrals-200: #eaedf1;
   --color-neutrals-900: #030712;
@@ -11,9 +13,11 @@
   --color-blue-700-transparent: rgba(16 24 40 / 0.9);
   --color-green-600: #4bb84b;
   --color-neutrals-100: #f9fafb;
+  --color-neutrals-150: #eaeaea;
   --color-neutrals-400: #99a1af;
   --color-yellow-600: #fbc336;
   --color-yellow-700: #daae3c;
+  --color-yellow-800: #dea027;
 
   /* TOKENS */
   --color-action: var(--color-yellow-500);
