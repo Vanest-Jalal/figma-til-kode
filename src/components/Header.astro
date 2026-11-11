@@ -47,6 +47,7 @@ const currentPath = Astro.url.pathname;
   </nav>
   <!-- Login-popover -->
 <div id="login-popover" popover>
+    <span class="popover-arrow" aria-hidden="true"></span>
   <h2>Dashboard Login</h2>
 
   <form id="login-form">
@@ -139,8 +140,9 @@ const currentPath = Astro.url.pathname;
   top: 105px;
   right: max(38px, calc((100vw - 1200px) / 2));
   left: auto;
+  overflow: visible;
 
-  width: min(90vw, 400px);
+  width: min(90vw, 320px);
   padding: var(--space-5);
   margin: 0;
   border: none;
@@ -151,19 +153,19 @@ const currentPath = Astro.url.pathname;
 }
 
 /* Lille trekant, der peger op mod Login */
-#login-popover::before {
-  content: "";
+#login-popover .popover-arrow {
   position: absolute;
-  top: -10px;
+  top: 0;
   right: 30px;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-bottom: 10px solid var(--color-surface-primary);
+  width: 16px;
+  height: 16px;
+  background-color: var(--color-surface-primary);
+  transform: translateY(-50%) rotate(45deg);
 }
 
 #login-popover h2 {
   font-family: var(--font-cabin);
-  font-size: 32px;
+  font-size: 30px;
   font-weight: 600;
   margin-bottom: var(--space-5);
 }
@@ -239,6 +241,19 @@ const currentPath = Astro.url.pathname;
       grid-row: 3;
       justify-self: start;
     }
+
+    /* Login-popover på mobil */
+#login-popover {
+  top: 100px;
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+  width: min(90vw, 320px);
+}
+
+#login-popover .popover-arrow {
+  display: none;
+}
   }
 </style>
 
@@ -257,4 +272,11 @@ const currentPath = Astro.url.pathname;
     mobileMenu?.classList.toggle("is-open", !isOpen);
     loginButton?.classList.toggle("is-open", !isOpen);
   });
+
+  const loginForm = document.querySelector("#login-form");
+
+loginForm?.addEventListener("submit", (event) => {
+  event.preventDefault();
+  alert("Login er kun en demo");
+});
 </script>
