@@ -1,18 +1,24 @@
 :root {
   /* ==== Colors ==== */
   /* PRIMITIVES */
+  --color-yellow-100: #ffeccb;
   --color-yellow-500: #ffcc4a;
   --color-green-400: #a4eda4;
+  --color-green-500: #4eaf4e;
   --color-neutrals-50: #f9fafb;
   --color-neutrals-200: #eaedf1;
   --color-neutrals-900: #030712;
   --color-neutrals-700: #5a606f;
   --color-blue-700: #101828;
+  --color-blue-600: #2b3a58; /* Skillelinje mellem Newsletter og Footer */
   --color-blue-700-transparent: rgba(16 24 40 / 0.9);
   --color-green-600: #4bb84b;
   --color-neutrals-100: #f9fafb;
+  --color-neutrals-150: #eaeaea;
   --color-neutrals-400: #99a1af;
   --color-yellow-600: #fbc336;
+  --color-yellow-700: #daae3c;
+  --color-yellow-800: #dea027;
 
   /* TOKENS */
   --color-action: var(--color-yellow-500);
@@ -45,6 +51,9 @@
 
   /* Header */
   --space-nav-gap: 30px;
+
+  /* Hero */
+  --space-hero-content-gap: 1.8125rem; /* 29px */
 
   /* ==== Typography ==== */
   --font-lato: "Lato", sans-serif;

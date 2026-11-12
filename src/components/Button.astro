@@ -1,17 +1,20 @@
 ---
 import ArrowRight from "../icons/arrow--right.svg";
-const { href = "#", variant = "primary", showArrow = false } = Astro.props;
+
+// Henter knappens variant og bestemmer, om pilen skal vises
+const { variant = "primary", showArrow = false } = Astro.props;
 ---
 
-<a href={href} class={`button ${variant}`}>
+<button type="button" class={`button ${variant}`}>
   <slot />
   {showArrow && <ArrowRight />}
-</a>
+</button>
 
 <!-- Styling  -->
 
 <style>
   .button {
+    /* Fælles styling til både links og knapper */
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -19,7 +22,9 @@ const { href = "#", variant = "primary", showArrow = false } = Astro.props;
     padding: var(--space-3) var(--space-5);
     font-family: var(--font-lato);
     font-weight: 700;
+    font-size: inherit;
     text-decoration: none;
+    border: none;
     border-radius: var(--radius-pill);
     cursor: pointer;
   }
@@ -46,10 +51,14 @@ const { href = "#", variant = "primary", showArrow = false } = Astro.props;
     text-decoration: underline;
   }
 
-  /* Light button */
+  /* Lys knap til mørke baggrunde */
   .button.light {
-    background-color: var(--color-surface-primary);
+    background-color: var(--color-on-ui-primary);
     color: var(--color-text);
+    padding: 0.9375rem 2.125rem; /* 15px 34px fra Figma */
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.6;
   }
 
   /* Styling af pil */
@@ -58,5 +67,17 @@ const { href = "#", variant = "primary", showArrow = false } = Astro.props;
     height: auto;
     stroke-width: 2px;
     flex-shrink: 0;
+  }
+
+  /* Sort tekstknap til lyse baggrunde */
+  .button.text-dark {
+    background-color: transparent;
+    color: var(--color-text);
+    padding: 0;
+    border-radius: 0;
+    text-decoration: none;
+    font-size: 1.125rem; /* 18px fra Figma */
+    font-weight: 600;
+    line-height: 1.6;
   }
 </style>

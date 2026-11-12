@@ -1,0 +1,210 @@
+---
+import Phone from "@icons/phone.svg";
+import Clock from "@icons/clock.svg";
+import Pin from "@icons/pin.svg";
+
+import { Image } from "astro:assets";
+import ContactWoman from "@assets/images/contact-woman.png";
+import ContactMeeting from "@assets/images/contact-meeting.png";
+import ContactTeam from "@assets/images/contact-team.png";
+---
+
+<!-- Kontaktsektion med information og billeder -->
+<section class="contact">
+  <div class="contact-content">
+    <div class="contact-info">
+      <!-- Sektionens overskrift og beskrivelse -->
+      <span class="eyebrow">Process</span>
+      <h2>Contact Us. It’s Easy.</h2>
+      <p>
+        Leverage agile frameworks to provide a robust synopsis for high level
+        overviews. Iterative approaches to corporate strategy foster
+        collaborative.
+      </p>
+      <!-- Kontaktoplysninger med eksisterende SVG-ikoner -->
+      <div class="contact-details">
+        <div class="contact-item">
+          <Phone />
+          <div>
+            <span>Call Today</span>
+            <p>+1 800 100 900</p>
+          </div>
+        </div>
+        <!-- Åbningstider -->
+        <div class="contact-item">
+          <Clock />
+          <div>
+            <span>Monday to Friday</span>
+            <p>9AM - 5PM</p>
+          </div>
+        </div>
+        <!-- Adresse -->
+        <div class="contact-item">
+          <Pin />
+          <div>
+            <span>USA Office</span>
+            <p>195 Devonshire St, Boston, MA 02110</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Billeder til kontaktsektionen -->
+    <div class="contact-images">
+      <Image
+        src={ContactWoman}
+        alt="Kvinde siddende på et kontor"
+        class="contact-image-main"
+      />
+      <Image
+        src={ContactMeeting}
+        alt="To kvinder arbejder sammen ved en computer"
+        class="contact-image-meeting"
+      />
+      <Image
+        src={ContactTeam}
+        alt="Medarbejdere på kontoret"
+        class="contact-image-team"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Sektionens overordnede layout */
+  .contact {
+    padding: var(--space-8) var(--space-9);
+    background-color: var(--color-surface-primary);
+  }
+
+  .contact-content {
+    max-width: 1200px;
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+    align-items: center;
+  }
+
+  /* Lille sektionsoverskrift */
+  .contact-info > .eyebrow {
+    display: block;
+    color: var(--color-text);
+    margin-bottom: var(--space-2);
+  }
+
+  /* Sektionens hovedoverskrift */
+  .contact-info h2 {
+    color: var(--color-text);
+    margin-bottom: var(--space-4);
+  }
+
+  /* Beskrivende tekst under overskriften */
+  .contact-info > p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-6);
+    max-width: 350px;
+  }
+
+  /* Kontaktoplysninger med ikoner og tekst */
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  /* Farvede cirkler bag kontaktikonerne */
+  .contact-item > svg {
+    width: 3.27rem; /* ca. 52,33px fra Figma */
+    height: 3.27rem;
+    padding: var(--space-3);
+    border-radius: 50%;
+    box-sizing: border-box;
+    flex-shrink: 0;
+  }
+
+  /* Telefon */
+  .contact-item:nth-child(1) > svg {
+    background-color: var(--color-yellow-100);
+    color: var(--color-yellow-800);
+  }
+
+  /* Åbningstider */
+  .contact-item:nth-child(2) > svg {
+    background-color: var(--color-green-400);
+    color: var(--color-green-500);
+  }
+
+  /* Adresseikon */
+  .contact-item:nth-child(3) > svg {
+    background-color: var(--color-neutrals-150);
+    color: var(--color-neutrals-900);
+  }
+
+  /* Kontaktoplysningernes labels */
+  .contact-item span {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  /* Telefonnummer, åbningstider og adresse */
+  .contact-item p {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--color-text);
+    margin: 0;
+  }
+
+  /* Billedernes placering i kontaktsektionen */
+  .contact-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    gap: var(--space-3);
+  }
+
+  /* Det store billede fylder begge rækker */
+  .contact-image-main {
+    grid-row: 1 / 3;
+  }
+
+  /* Fælles styling af billederne */
+  .contact-images img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+  }
+
+  /* Grøn dekoration bag det store billede */
+  .contact-images {
+    position: relative;
+  }
+
+  .contact-images::before {
+    content: "";
+    position: absolute;
+    width: 45%;
+    height: 30%;
+    background-color: var(--color-green-400);
+    border-radius: var(--radius-lg);
+    bottom: -25px;
+    left: -35px;
+    z-index: 0;
+  }
+
+  .contact-images img {
+    position: relative;
+    z-index: 1;
+  }
+</style>

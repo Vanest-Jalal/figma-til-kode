@@ -1,0 +1,70 @@
+---
+// Importerer statistikken fra den eksisterende JSON-fil
+import experienceData from "../data/experience.json";
+
+// Importerer komponenten med procentcirklerne
+import StatList from "./StatList.astro";
+---
+
+<!-- Experience-sektionen med tekst og statistik -->
+<section class="experience">
+  <div class="experience-content">
+    <!-- Sektionens overskrift og beskrivelse -->
+    <div class="experience-text">
+      <span class="eyebrow">Experience</span>
+      <h2>More than 25 years of experience</h2>
+      <p>3000+ our clients are insured around the World</p>
+    </div>
+
+    <!-- Viser de tre procentcirkler fra experience.json -->
+    <div class="experience-stats">
+      <StatList stats={experienceData.stats} />
+    </div>
+  </div>
+</section>
+
+<!-- Styling -->
+<style>
+  /* Sektionens gule baggrund */
+  .experience {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-surface-highlight);
+    padding: var(--space-9);
+    width: 100vw;
+    min-height: 528px;
+    position: relative;
+    left: 50%;
+    margin-left: -50vw;
+    box-sizing: border-box;
+  }
+
+  /* Placerer tekst og procentcirkler ved siden af hinanden */
+  .experience-content {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-6);
+  }
+
+  /* Afstand under den lille overskrift */
+  .experience-text .eyebrow {
+    display: block;
+    margin-bottom: var(--space-2);
+  }
+
+  /* Bredde og afstand på hovedoverskriften */
+  .experience-text h2 {
+    max-width: 373px;
+    margin-bottom: var(--space-4);
+  }
+
+  /* Beskrivelse med mindre skriftstørrelse */
+  .experience-text p {
+    font-size: 1rem; /* 16px */
+    margin: 0;
+  }
+</style>

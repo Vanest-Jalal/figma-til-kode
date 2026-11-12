@@ -1,0 +1,86 @@
+---
+// Modtager data for det enkelte card
+const { value } = Astro.props;
+
+// Importerer den genbrugelige Button-komponent
+import Button from "./Button.astro";
+
+// Importerer ikoner fra projektets ikonmappe
+import Layers from "@icons/layers.svg";
+import Bars from "@icons/bars.svg";
+import Globe from "@icons/globe.svg";
+import Gear from "@icons/gear.svg";
+
+// Kobler navnene fra JSON-filen til de rigtige ikoner
+const icons = {
+  layers: Layers,
+  bars: Bars,
+  globe: Globe,
+  gear: Gear,
+};
+
+// Vælger det ikon, der passer til det enkelte card
+const Icon = icons[value.icon as keyof typeof icons];
+---
+
+<article class="core-value-card">
+  <!-- Viser cardets ikon i en sort cirkel -->
+  <div class="card-icon">
+    {Icon && <Icon width={24} height={24} />}
+  </div>
+
+  <!-- Titel og beskrivelse fra JSON-filen -->
+  <h3>{value.title}</h3>
+  <p>{value.description}</p>
+
+  <!-- Genbruger Button med den sorte tekstvariant -->
+  <Button variant="text-dark" showArrow={true} />
+</article>
+
+<!-- Styling -->
+<style>
+  /* Styling af det enkelte card */
+  .core-value-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding: var(--space-5);
+    background-color: var(--color-surface-secondary);
+    color: var(--color-text);
+    border-radius: var(--radius-lg);
+  }
+
+  /* Cardets overskrift */
+  .core-value-card h3 {
+    font-size: 1.25rem; /* 20px */
+    margin: 0;
+  }
+
+  /* Cardets beskrivelse */
+  .core-value-card p {
+    color: var(--color-text-muted);
+    font-size: 1rem; /* 16px */
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* Sort cirkel omkring ikonet */
+  .card-icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    background-color: var(--color-ui-primary);
+    color: var(--color-on-ui-primary);
+    border-radius: var(--radius-pill);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Gør ikonet hvidt */
+  .card-icon :global(svg) {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--color-on-ui-primary);
+  }
+</style>

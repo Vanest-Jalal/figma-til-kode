@@ -1,0 +1,107 @@
+---
+// Importerer indholdet til sektionen fra JSON-filen
+import coreValues from "../data/coreValues.json";
+import Button from "./Button.astro";
+import CoreValueCard from "./CoreValueCard.astro";
+---
+
+<!-- Sektion med virksomhedens kerneværdier -->
+<section class="core-values">
+  <div class="core-values-content">
+    <!-- Sektionens overskrift, beskrivelse og knap -->
+    <div class="core-values-header">
+      <div class="core-values-text">
+        <!-- Henter teksterne fra JSON-filen -->
+        <span class="eyebrow">{coreValues.eyebrow}</span>
+        <h2>{coreValues.title}</h2>
+        <p>{coreValues.subtitle}</p>
+      </div>
+
+      <!-- Genbruger Button-komponenten med den lyse variant -->
+      <Button variant="light">
+        {coreValues.button.text}
+      </Button>
+    </div>
+
+    <!-- Gennemgår alle kerneværdier fra JSON-filen og viser et card for hver -->
+    <div class="core-values-grid">
+      {coreValues.values.map((value) => <CoreValueCard value={value} />)}
+    </div>
+  </div>
+</section>
+
+<!-- Styling -->
+<style>
+  /* Mørk baggrund på hele sektionen */
+  .core-values {
+    background-color: var(--color-ui-primary);
+    color: var(--color-on-ui-primary);
+    padding: var(--space-8) var(--space-9);
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    margin-left: -50vw;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  /* Holder indholdet centreret på siden */
+  .core-values-content {
+    max-width: 75rem;
+    margin-inline: auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Placerer teksten til venstre og knappen til højre */
+  .core-values-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: var(--space-6);
+    margin-bottom: var(--space-7);
+  }
+
+  /* Begrænser tekstens bredde */
+  .core-values-text {
+    max-width: 650px;
+  }
+
+  /* Afstand omkring sektionens overskrift */
+  .core-values-text h2 {
+    margin-block: var(--space-3);
+  }
+
+  /* Lys, nedtonet tekst på den mørke baggrund */
+  .core-values-text p {
+    color: var(--color-on-ui-primary-muted);
+  }
+
+  /* Placerer de fire cards i et grid med fire kolonner */
+  .core-values-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-5);
+    align-items: start;
+  }
+
+  /* Dekorativt grid-mønster i baggrunden */
+  .core-values::before {
+    content: "";
+    position: absolute;
+    top: -49px;
+    right: 5%;
+    width: 954px;
+    height: 736px;
+
+    background-image:
+      linear-gradient(to right, var(--color-action) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--color-action) 1px, transparent 1px);
+
+    background-size: 60px 60px;
+    opacity: 0.2;
+
+    mask-image: radial-gradient(ellipse, black, transparent 70%);
+    pointer-events: none;
+  }
+</style>
