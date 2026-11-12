@@ -1,0 +1,64 @@
+<section class="about-intro">
+  <p class="eyebrow">ABOUT</p>
+
+  <div class="title-wrapper">
+    <h1>Igniting Innovation</h1>
+    <span class="yellow-line" aria-hidden="true"></span>
+  </div>
+
+  <p class="intro-description">
+    Our strength lies in the collaboration between our talented teams and
+    esteemed clients. We cultivate a workplace that champions innovation,
+    promotes peak performance, and guarantees client satisfaction.
+  </p>
+</section>
+
+<style>
+  .about-intro{
+      grid-column: full;
+      display: grid;
+      grid-template-columns: subgrid;
+      row-gap: var(--space-3);
+      text-align: center;
+      padding-block: var(--space-8);
+  }
+
+  .about-intro > * {
+  grid-column: content;
+}
+
+  .eyebrow{
+    font-size: 16px;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+  }
+
+  .intro-description{
+    max-width: 600px;
+    margin-inline: auto;
+    margin-top: var(--space-5);
+  }
+
+.title-wrapper {
+  position: relative;
+  width: fit-content;
+  justify-self: center;
+}
+
+.yellow-line {
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block-end: -0.35rem;
+  inline-size: calc(50vw + 50%);
+  block-size: 7px;
+  background-color: var(--color-action);
+  z-index: 0;
+}
+
+.about-intro h1 {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+}
+
+</style>
