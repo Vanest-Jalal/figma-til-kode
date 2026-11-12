@@ -8,8 +8,9 @@ const currentPath = Astro.url.pathname;
     <a href="/" class="logo">
       Ask<span>Experts</span>
     </a>
+
     <!-- Navigationslinks -->
-    <div class="nav-links">
+    <div class="nav-links" id="mobile-menu">
       <a href="/" class:list={{ active: currentPath === "/" }}> Home </a>
 
       <a
@@ -27,11 +28,38 @@ const currentPath = Astro.url.pathname;
         About
       </a>
     </div>
+
     <!-- Login-knap -->
     <button type="button" class="login-button" popovertarget="login-popover">
       Login
     </button>
+
+    <!-- Burgermenu -->
+    <button
+      type="button"
+      class="menu-toggle"
+      aria-label="Åbn menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      ☰
+    </button>
   </nav>
+  <!-- Login-popover -->
+<div id="login-popover" popover>
+    <span class="popover-arrow" aria-hidden="true"></span>
+  <h2>Dashboard Login</h2>
+
+  <form id="login-form">
+    <label for="email">Email address</label>
+    <input type="email" id="email" name="email" required />
+
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" required />
+
+    <button type="submit">Go to dashboard</button>
+  </form>
+</div>
 </header>
 
 <!-- Styling -->
@@ -42,25 +70,37 @@ const currentPath = Astro.url.pathname;
   }
 
   nav {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 20px;
     align-items: center;
+
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
   }
 
+  /* Logo */
   .logo {
+    justify-self: start;
     color: var(--color-on-ui-primary);
     text-decoration: none;
-    font-weight: 700;
+    font-family: var(--font-cabin);
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 1.05;
   }
 
   .logo span {
     color: var(--color-action);
   }
 
+  /* Navigation */
   .nav-links {
     display: flex;
-    gap: var(--space-nav-gap);
+    justify-self: center;
     align-items: center;
+    gap: var(--space-nav-gap);
   }
 
   .nav-links a {
@@ -72,18 +112,176 @@ const currentPath = Astro.url.pathname;
     text-decoration: none;
   }
 
+  .nav-links a.active {
+    text-decoration: underline;
+    text-decoration-color: var(--color-action);
+    text-underline-offset: 5px;
+  }
+
+  /* Login */
   .login-button {
+    justify-self: end;
     background-color: var(--color-on-ui-primary);
     color: var(--color-ui-primary);
     padding: 4px 16px;
     border: none;
     border-radius: var(--radius-pill);
     cursor: pointer;
+    anchor-name: --login-anchor;
   }
 
-  .nav-links a.active {
-    text-decoration: underline;
-    text-decoration-color: var(--color-action);
-    text-underline-offset: 5px;
+  .menu-toggle {
+    display: none;
+  }
+
+  /* Login-popover */
+#login-popover {
+   position: fixed;
+  position-anchor: --login-anchor;
+  position-area: bottom span-left;
+    margin-top: 12px;
+  overflow: visible;
+
+  width: min(90vw, 320px);
+  padding: var(--space-5);
+  
+  border: none;
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface-primary);
+  color: var(--color-text);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+/* Lille trekant, der peger op mod Login */
+#login-popover .popover-arrow {
+  position: absolute;
+  top: 0;
+  right: 30px;
+  width: 16px;
+  height: 16px;
+  background-color: var(--color-surface-primary);
+  transform: translateY(-50%) rotate(45deg);
+}
+
+#login-popover h2 {
+  font-family: var(--font-cabin);
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: var(--space-5);
+}
+
+#login-popover form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+#login-popover label {
+  font-family: var(--font-lato);
+  font-size: 14px;
+}
+
+#login-popover input {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid var(--color-surface-tertiary);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-surface-primary);
+}
+
+#login-popover button {
+  width: 100%;
+  margin-top: var(--space-3);
+  padding: 14px;
+  border: none;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-action);
+  color: var(--color-text);
+  font-family: var(--font-lato);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+  @media (max-width: 700px) {
+    nav {
+      grid-template-columns: 1fr auto;
+    }
+
+    .menu-toggle {
+      display: block;
+      grid-column: 2;
+      grid-row: 1;
+      background: transparent;
+      color: var(--color-on-ui-primary);
+      border: none;
+      font-size: 1.75rem;
+      cursor: pointer;
+    }
+
+    .nav-links,
+    .login-button {
+      display: none;
+    }
+
+    .nav-links.is-open {
+      display: flex;
+      flex-direction: column;
+      grid-column: 1 / -1;
+      grid-row: 2;
+      align-items: flex-start;
+      justify-self: stretch;
+      gap: 20px;
+      padding-block: 20px;
+    }
+
+    /* Vis Login-knappen når menuen er åben */
+    .login-button.is-open {
+      display: block;
+      grid-column: 1 / -1;
+      grid-row: 3;
+      justify-self: start;
+    }
+
+    /* Login-popover på mobil */
+#login-popover {
+  position-anchor: auto;
+  position-area: none;
+
+  inset: auto;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: min(90vw, 320px);
+  margin: 0;
+}
+
+#login-popover .popover-arrow {
+  display: none;
+}
   }
 </style>
+
+<script>
+  const menuToggle = document.querySelector(".menu-toggle");
+  const mobileMenu = document.querySelector("#mobile-menu");
+  const loginButton = document.querySelector(".login-button");
+
+  menuToggle?.addEventListener("click", () => {
+    const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+
+    menuToggle.setAttribute("aria-expanded", String(!isOpen));
+    menuToggle.textContent = isOpen ? "☰" : "×";
+    menuToggle.setAttribute("aria-label", isOpen ? "Åbn menu" : "Luk menu");
+
+    mobileMenu?.classList.toggle("is-open", !isOpen);
+    loginButton?.classList.toggle("is-open", !isOpen);
+  });
+
+  const loginForm = document.querySelector("#login-form");
+
+loginForm?.addEventListener("submit", (event) => {
+  event.preventDefault();
+  alert("Login er kun en demo");
+});
+</script>

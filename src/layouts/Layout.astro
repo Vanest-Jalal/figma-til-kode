@@ -41,7 +41,9 @@ import Footer from "../components/Footer.astro";
     grid-column: content;
   }
 
-  .page-layout > :global(.hero) {
+  .page-layout > :global(.hero),
+  .page-layout > :global(.newsletter),
+  .page-layout > :global(.footer) {
     grid-column: full;
   }
 </style>
