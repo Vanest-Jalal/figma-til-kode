@@ -1,35 +1,9 @@
 ---
 import Layout from "@layouts/Layout.astro";
+import AboutHero from "@components/about/AboutHero.astro";
 ---
 
 <Layout>
-<section class="about-intro">
-  <p class="eyebrow">ABOUT</p>
-  <h1>Igniting Innovation</h1>
-  <p>Our strength lies in the collaboration between our talented teams and esteemed clients.</p>
-</section>
+  <AboutHero />
 </Layout>
 
-<style>
-  .about-intro{
-      grid-column: full;
-  display: grid;
-  grid-template-columns: subgrid;
-    text-align: center;
-    padding-block: var(--space-8);
-  }
-
-  .about-intro > * {
-  grid-column: content;
-}
-
-  .eyebrow{
-    font-size: 16px;
-    text-transform:uppercase;
-    letter-spacing:0.1em;
-  }
-
-  .intro-description{
-    max-width: 600px;
-  }
-</style>
