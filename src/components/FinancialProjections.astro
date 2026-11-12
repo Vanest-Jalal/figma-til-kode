@@ -16,7 +16,7 @@ const financialData = await fetch(
     <!-- Placerer tekst og navigationspile ved siden af hinanden -->
     <div class="financial-header">
       <div class="financial-text">
-        <span>{financialData.eyebrow}</span>
+        <span class="eyebrow">{financialData.eyebrow}</span>
         <h2>{financialData.title}</h2>
         <p>{financialData.subtitle}</p>
       </div>
@@ -101,21 +101,14 @@ const financialData = await fetch(
     margin-inline: auto;
   }
 
-  /* Overskrift */
+  /* Farve og afstand på overskriften */
   .financial-projections h2 {
-    font-family: var(--font-cabin);
-    font-size: 2.8125rem;
-    font-weight: 700;
-    line-height: 1.16;
     color: var(--color-text);
     margin: 0;
   }
 
-  /* Beskrivelsen under overskriften */
+  /* Farve og bredde på beskrivelsen */
   .financial-projections p {
-    font-family: var(--font-lato);
-    font-size: 1.125rem;
-    line-height: 1.475;
     color: var(--color-text-muted);
     max-width: 645px;
   }

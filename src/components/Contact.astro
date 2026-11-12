@@ -14,7 +14,7 @@ import ContactTeam from "@assets/images/contact-team.png";
   <div class="contact-content">
     <div class="contact-info">
       <!-- Sektionens overskrift og beskrivelse -->
-      <span>Process</span>
+      <span class="eyebrow">Process</span>
       <h2>Contact Us. It’s Easy.</h2>
       <p>
         Leverage agile frameworks to provide a robust synopsis for high level
@@ -87,33 +87,21 @@ import ContactTeam from "@assets/images/contact-team.png";
   }
 
   /* Lille sektionsoverskrift */
-  .contact-info > span {
+  .contact-info > .eyebrow {
     display: block;
-    font-family: var(--font-lato);
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.475;
-    letter-spacing: 0.145em;
-    text-transform: uppercase;
     color: var(--color-text);
     margin-bottom: var(--space-2);
   }
 
   /* Sektionens hovedoverskrift */
   .contact-info h2 {
-    font-family: var(--font-cabin);
-    font-size: 2.8125rem; /* 45px som i Experience */
-    font-weight: 700;
-    line-height: 1.16;
     color: var(--color-text);
     margin-bottom: var(--space-4);
   }
 
   /* Beskrivende tekst under overskriften */
   .contact-info > p {
-    font-family: var(--font-lato);
     font-size: 1rem;
-    font-weight: 400;
     line-height: 1.5;
     color: var(--color-text-muted);
     margin-bottom: var(--space-6);
@@ -160,18 +148,16 @@ import ContactTeam from "@assets/images/contact-team.png";
     background-color: var(--color-neutrals-150);
     color: var(--color-neutrals-900);
   }
+
   /* Kontaktoplysningernes labels */
   .contact-item span {
     display: block;
-    font-family: var(--font-lato);
     font-size: 0.875rem;
-    font-weight: 400;
     color: var(--color-text-muted);
   }
 
   /* Telefonnummer, åbningstider og adresse */
   .contact-item p {
-    font-family: var(--font-lato);
     font-size: 1rem;
     font-weight: 600;
     line-height: 1.3;

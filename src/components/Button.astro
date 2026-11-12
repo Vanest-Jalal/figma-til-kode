@@ -51,10 +51,14 @@ const { variant = "primary", showArrow = false } = Astro.props;
     text-decoration: underline;
   }
 
-  /* Light button */
+  /* Lys knap til mørke baggrunde */
   .button.light {
-    background-color: var(--color-surface-primary);
+    background-color: var(--color-on-ui-primary);
     color: var(--color-text);
+    padding: 0.9375rem 2.125rem; /* 15px 34px fra Figma */
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.6;
   }
 
   /* Styling af pil */
@@ -63,5 +67,17 @@ const { variant = "primary", showArrow = false } = Astro.props;
     height: auto;
     stroke-width: 2px;
     flex-shrink: 0;
+  }
+
+  /* Sort tekstknap til lyse baggrunde */
+  .button.text-dark {
+    background-color: transparent;
+    color: var(--color-text);
+    padding: 0;
+    border-radius: 0;
+    text-decoration: none;
+    font-size: 1.125rem; /* 18px fra Figma */
+    font-weight: 600;
+    line-height: 1.6;
   }
 </style>

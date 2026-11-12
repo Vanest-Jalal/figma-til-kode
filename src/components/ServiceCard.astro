@@ -24,5 +24,16 @@ import Button from "./Button.astro";
       color: var(--color-on-surface-elevated);
       backdrop-filter: blur(16px);
     }
+
+    /* Mindre overskrift til servicekortene */
+    article h2 {
+      font-size: 1.5rem; /* 24px */
+      margin: 0;
+    }
+
+    /* Placerer linket nederst i kortet */
+    article :global(.button) {
+      margin-top: auto;
+    }
   }
 </style>
