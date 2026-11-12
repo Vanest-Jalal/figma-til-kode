@@ -5,9 +5,30 @@ import ArrowLeft from "../icons/arrow-left.svg";
 import ArrowRight from "../icons/arrow--right.svg";
 
 // Henter indholdet til sektionen fra API'et
-const financialData = await fetch(
-  "https://ftk-api.pages.dev/financial-projections",
-).then((res) => res.json());
+let financialData;
+
+try {
+  const response = await fetch(
+    "https://ftk-api.pages.dev/financial-projections",
+  );
+
+  // Tjekker om API-kaldet lykkedes
+  if (!response.ok) {
+    throw new Error("Kunne ikke hente data");
+  }
+
+  financialData = await response.json();
+} catch (error) {
+  console.error(error);
+
+  // Fallback, hvis API'et ikke svarer
+  financialData = {
+    eyebrow: "",
+    title: "Financial Projections",
+    subtitle: "Content is currently unavailable.",
+    values: [],
+  };
+}
 ---
 
 <section class="financial-projections">
