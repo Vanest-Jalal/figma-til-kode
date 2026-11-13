@@ -1,0 +1,84 @@
+
+<section class="about-value">
+  <div class="value-inner">
+    <div class="value-header">
+    <div class="value-content">
+      <p class="eyebrow">Growing with our Clients</p>
+       <h2>Our core values &amp; principles</h2>
+
+      <p>
+        Capitalize on low hanging fruit to identify a ballpark value added activity beta test. 
+        Override the digital divide with additional from DevOps.
+      </p>
+     
+    </div>
+    <a href="/contact" class="value-button">Get in touch</a>
+  </div>
+  <div class="values-grid">
+  <!-- ValueCard-komponenterne indsættes her -->
+</div>
+  </div>
+  
+</section>
+
+<style>
+.value-content h2 {
+  font-family: var(--font-cabin);
+  font-size: 45px;
+  font-weight: 700;
+  line-height: 1.16;
+}
+
+.value-content > p:not(.eyebrow) {
+  font-family: var(--font-lato);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.475;
+  color: var(--color-text-muted);
+}
+
+.about-value {
+  grid-column: full;
+  display: grid;
+  grid-template-columns: subgrid;
+  padding-block: var(--space-9);
+  background-color: var(--color-surface-secondary);
+}
+
+.value-inner {
+  grid-column: content;
+  display: grid;
+  gap: var(--space-6);
+
+  width: 100%;
+  max-width: 1000px;
+  justify-self: center;
+}
+
+.value-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: var(--space-6);
+  align-items: center;
+}
+
+
+.value-button{
+display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  justify-self: center;
+  width: fit-content;
+  padding: 15px 34px;
+  border-radius: 42px;
+
+background: var(--color-ui-primary, #030712);
+color: var(--color-on-ui-primary, #F9FAFB);
+
+  font-family: var(--font-lato);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 28.8px;
+  text-decoration: none;
+}
+</style>
