@@ -1,4 +1,6 @@
-
+---
+import ValueCard from "./ValueCard.astro";
+---
 <section class="about-value">
   <div class="value-inner">
     <div class="value-header">
@@ -14,8 +16,26 @@
     </div>
     <a href="/contact" class="value-button">Get in touch</a>
   </div>
-  <div class="values-grid">
-  <!-- ValueCard-komponenterne indsættes her -->
+<div class="values-grid">
+ <ValueCard
+  title="Creative Ideas"
+  description="Explore innovative strategies tailored to your goals. Unlock unique solutions that inspire growth and creativity. Drive impactful change."
+/>
+
+<ValueCard
+  title="Best Features"
+  description="Deliver advanced tools designed for seamless integration. Optimize workflows with cutting-edge technology."
+/>
+
+<ValueCard
+  title="Experience"
+  description="Leverage years of proven expertise across diverse industries. Empower your business with our skilled professionals. Achieve sustainable success."
+/>
+
+<ValueCard
+  title="Easy Solutions"
+  description="Streamline your challenges with simple, effective solutions. Ensure hassle-free implementation for measurable results."
+/>
 </div>
   </div>
   
@@ -80,5 +100,11 @@ color: var(--color-on-ui-primary, #F9FAFB);
   font-weight: 600;
   line-height: 28.8px;
   text-decoration: none;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-4);
 }
 </style>

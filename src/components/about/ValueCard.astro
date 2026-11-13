@@ -1,0 +1,55 @@
+---
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<article class="value-card">
+  <div class="value-icon">
+    <slot name="icon" />
+  </div>
+
+  <h3>{title}</h3>
+  <p>{description}</p>
+
+  <a href="#" class="read-more">Read More →</a>
+</article>
+
+
+<style>
+    .value-card{
+    background-color: var(--color-surface-primary);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-neutrals-150);
+    padding: var(--space-4);
+    }
+
+    .value-card h3 {
+    color: var(--color-neutrals-900);
+    font-family: var(--font-cabin);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 23.2px;
+    }
+
+    .value-card p{
+    color: var(--color-neutrals-700);
+    font-family: var(--font-lato);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26.55px;
+    }
+
+    .value-card {
+  --flow-space: var(--space-3);
+}
+
+.value-card > * + * {
+  margin-block-start: var(--flow-space);
+}
+</style>
