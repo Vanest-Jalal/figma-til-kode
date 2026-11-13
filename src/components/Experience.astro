@@ -10,7 +10,7 @@ import StatList from "./StatList.astro";
 <section class="experience">
   <div class="experience-content">
     <!-- Sektionens overskrift og beskrivelse -->
-    <div class="experience-text">
+    <div class="experience-text flow">
       <span class="eyebrow">Experience</span>
       <h2>More than 25 years of experience</h2>
       <p>3000+ our clients are insured around the World</p>
@@ -50,21 +50,22 @@ import StatList from "./StatList.astro";
     gap: var(--space-6);
   }
 
-  /* Afstand under den lille overskrift */
-  .experience-text .eyebrow {
-    display: block;
-    margin-bottom: var(--space-2);
-  }
-
-  /* Bredde og afstand på hovedoverskriften */
-  .experience-text h2 {
-    max-width: 373px;
-    margin-bottom: var(--space-4);
+  /* Styrer afstanden mellem tekstelementerne */
+  .experience-text {
+    --flow-space: var(--space-4);
   }
 
   /* Beskrivelse med mindre skriftstørrelse */
   .experience-text p {
     font-size: 1rem; /* 16px */
     margin: 0;
+  }
+
+  /* Tilpasser Experience til tablet og mobil */
+  @media (max-width: 1000px) {
+    .experience-content {
+      /* Placerer teksten over procentcirklerne */
+      flex-direction: column;
+    }
   }
 </style>

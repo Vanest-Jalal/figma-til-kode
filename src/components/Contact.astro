@@ -12,7 +12,7 @@ import ContactTeam from "@assets/images/contact-team.png";
 <!-- Kontaktsektion med information og billeder -->
 <section class="contact">
   <div class="contact-content">
-    <div class="contact-info">
+    <div class="contact-info flow">
       <!-- Sektionens overskrift og beskrivelse -->
       <span class="eyebrow">Process</span>
       <h2>Contact Us. It’s Easy.</h2>
@@ -22,7 +22,7 @@ import ContactTeam from "@assets/images/contact-team.png";
         collaborative.
       </p>
       <!-- Kontaktoplysninger med eksisterende SVG-ikoner -->
-      <div class="contact-details">
+      <div class="contact-details flow">
         <div class="contact-item">
           <Phone />
           <div>
@@ -86,17 +86,21 @@ import ContactTeam from "@assets/images/contact-team.png";
     align-items: center;
   }
 
+  /* Styrer afstanden mellem sektionens tekstelementer */
+  .contact-info {
+    --flow-space: var(--space-4);
+  }
+
   /* Lille sektionsoverskrift */
   .contact-info > .eyebrow {
     display: block;
     color: var(--color-text);
-    margin-bottom: var(--space-2);
   }
 
   /* Sektionens hovedoverskrift */
   .contact-info h2 {
     color: var(--color-text);
-    margin-bottom: var(--space-4);
+    margin: 0;
   }
 
   /* Beskrivende tekst under overskriften */
@@ -104,15 +108,13 @@ import ContactTeam from "@assets/images/contact-team.png";
     font-size: 1rem;
     line-height: 1.5;
     color: var(--color-text-muted);
-    margin-bottom: var(--space-6);
     max-width: 350px;
+    margin: 0;
   }
 
-  /* Kontaktoplysninger med ikoner og tekst */
+  /* Styrer afstanden mellem kontaktoplysningerne */
   .contact-details {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-5);
+    --flow-space: var(--space-5);
   }
 
   .contact-item {

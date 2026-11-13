@@ -23,7 +23,7 @@ const icons = {
 const Icon = icons[value.icon as keyof typeof icons];
 ---
 
-<article class="core-value-card">
+<article class="core-value-card flow">
   <!-- Viser cardets ikon i en sort cirkel -->
   <div class="card-icon">
     {Icon && <Icon width={24} height={24} />}
@@ -41,10 +41,12 @@ const Icon = icons[value.icon as keyof typeof icons];
 <style>
   /* Styling af det enkelte card */
   .core-value-card {
+    /* Styrer afstanden mellem kortets elementer */
+    --flow-space: var(--space-3);
+
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: var(--space-3);
     padding: var(--space-5);
     background-color: var(--color-surface-secondary);
     color: var(--color-text);

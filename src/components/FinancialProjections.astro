@@ -36,7 +36,7 @@ try {
   <div class="financial-content">
     <!-- Placerer tekst og navigationspile ved siden af hinanden -->
     <div class="financial-header">
-      <div class="financial-text">
+      <div class="financial-text flow">
         <span class="eyebrow">{financialData.eyebrow}</span>
         <h2>{financialData.title}</h2>
         <p>{financialData.subtitle}</p>
@@ -175,9 +175,10 @@ try {
     gap: var(--space-9);
   }
 
-  /* Bestemmer bredden på tekstområdet */
+  /* Bestemmer bredden og afstanden i tekstområdet */
   .financial-text {
     flex: 0 1 645px;
+    --flow-space: var(--space-2);
   }
 
   /* Skjuler kortene uden for sliderens synlige område */

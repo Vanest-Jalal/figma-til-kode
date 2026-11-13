@@ -23,4 +23,12 @@ const { stats } = Astro.props;
     align-items: center;
     gap: var(--space-6);
   }
+
+  /* Mobilversion af procentcirklerne */
+  @media (max-width: 700px) {
+    .stat-list {
+      /* Placerer procentcirklerne under hinanden */
+      flex-direction: column;
+    }
+  }
 </style>
