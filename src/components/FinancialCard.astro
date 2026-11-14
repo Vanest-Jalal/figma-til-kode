@@ -6,6 +6,7 @@ import Money from "../icons/money.svg";
 import Gear from "../icons/gear.svg";
 import Bars from "../icons/bars.svg";
 import Clock from "../icons/clock.svg";
+import Button from "./Button.astro";
 
 // Modtager data for ét kort fra FinancialProjections
 const { item } = Astro.props;
@@ -24,35 +25,34 @@ const icons = {
 const Icon = Object.entries(icons).find(([name]) => name === item.icon)?.[1];
 ---
 
-<article class="financial-card">
+<article class="financial-card flow">
   {Icon && <Icon />}
   <h3>{item.title}</h3>
   <p>{item.description}</p>
+
+  <!-- Styling -->
+  <style>
+    /* Styling af de enkelte finansielle kort */
+    .financial-card {
+      /* Styrer afstanden mellem ikon, overskrift og tekst */
+      --flow-space: var(--space-2);
+
+      padding: var(--space-5);
+      background-color: var(--color-surface-tertiary);
+      border-radius: var(--radius-md);
+    }
+
+    /* Kortets overskrift */
+    .financial-card h3 {
+      font-family: var(--font-cabin);
+      color: var(--color-text);
+      margin: 0;
+    }
+
+    /* Kortets beskrivelse */
+    .financial-card p {
+      color: var(--color-text-muted);
+      margin: 0;
+    }
+  </style>
 </article>
-
-<!-- Styling -->
-<style>
-  /* Styling af de enkelte finansielle kort */
-  .financial-card {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-2);
-    padding: var(--space-5);
-    background-color: var(--color-surface-tertiary);
-    border-radius: var(--radius-md);
-  }
-
-  /* Kortets overskrift */
-  .financial-card h3 {
-    font-family: var(--font-cabin);
-    color: var(--color-text);
-    margin: 0;
-  }
-
-  /* Kortets beskrivelse */
-  .financial-card p {
-    color: var(--color-text-muted);
-    margin: 0;
-  }
-</style>

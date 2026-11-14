@@ -13,7 +13,7 @@ import Checkmark from "../icons/checkmark.svg";
     <Image src={ExpectImage} alt="Tre kollegaer samarbejder omkring et bord" />
   </div>
 
-  <div class="expect-content">
+  <div class="expect-content flow">
     <span class="eyebrow">WE'LL WORK WITH YOU</span>
     <h2>What To Expect</h2>
 
@@ -54,12 +54,9 @@ import Checkmark from "../icons/checkmark.svg";
     gap: var(--space-8);
   }
 
-  /* Vertikal afstand mellem tekstens elementer */
+  /* Styrer afstanden mellem sektionens tekstelementer */
   .expect-content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-4);
+    --flow-space: var(--space-4);
   }
 
   /* Container til billede og grøn dekoration */
@@ -108,5 +105,13 @@ import Checkmark from "../icons/checkmark.svg";
   /* Grøn farve på SVG-checkmarks */
   .expect-content li :global(svg) {
     color: var(--color-ui-secondary-alternative);
+  }
+
+  /* Mobilversion af WhatToExpect */
+  @media (max-width: 700px) {
+    .what-to-expect {
+      /* Placerer billedet og teksten under hinanden */
+      grid-template-columns: minmax(0, 1fr);
+    }
   }
 </style>

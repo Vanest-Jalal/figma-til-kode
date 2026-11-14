@@ -8,7 +8,7 @@ import Footer from "../components/Footer.astro";
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>DIN TITEL HER. MÅSKE SOM PROP?</title>
@@ -24,6 +24,7 @@ import Footer from "../components/Footer.astro";
     <main class="page-layout">
       <slot />
     </main>
+    <Footer />
   </body>
 </html>
 
@@ -40,11 +41,10 @@ import Footer from "../components/Footer.astro";
   .page-layout > :global(*) {
     grid-column: content;
   }
-  
-.page-layout > :global(.hero),
-.page-layout > :global(.newsletter),
-.page-layout > :global(.footer),
-.page-layout > :global(.about-intro) {
-  grid-column: full;
-}
+
+  .page-layout > :global(.hero),
+  .page-layout > :global(.newsletter),
+  .page-layout > :global(.about-intro) {
+    grid-column: full;
+  }
 </style>
