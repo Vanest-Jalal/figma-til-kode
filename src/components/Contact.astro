@@ -209,4 +209,19 @@ import ContactTeam from "@assets/images/contact-team.png";
     position: relative;
     z-index: 1;
   }
+
+  /* Mobil */
+  @media (max-width: 700px) {
+    .contact {
+      padding: var(--space-6) var(--space-4);
+    }
+    .contact-content {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    /* Den grønne dekoration */
+    .contact-images::before {
+      left: -20px;
+      bottom: -12px;
+    }
+  }
 </style>

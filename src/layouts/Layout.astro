@@ -24,6 +24,7 @@ import Footer from "../components/Footer.astro";
     <main class="page-layout">
       <slot />
     </main>
+    <Footer />
   </body>
 </html>
 
@@ -43,7 +44,6 @@ import Footer from "../components/Footer.astro";
 
   .page-layout > :global(.hero),
   .page-layout > :global(.newsletter),
-  .page-layout > :global(.footer),
   .page-layout > :global(.about-intro) {
     grid-column: full;
   }

@@ -105,4 +105,26 @@ import CoreValueCard from "./CoreValueCard.astro";
     mask-image: radial-gradient(ellipse, black, transparent 70%);
     pointer-events: none;
   }
+
+  /* Tablet - viser 2 kort */
+  @media (max-width: 1000px) {
+    .core-values-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  /* Mobil - viser 1 kort */
+  @media (max-width: 700px) {
+    .core-values {
+      padding: var(--space-6) var(--space-4);
+    }
+    .core-values-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .core-values-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-4);
+    }
+  }
 </style>

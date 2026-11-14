@@ -72,5 +72,21 @@
     .footer-logo span {
       color: var(--color-action);
     }
+
+    /* Mobil */
+    @media (max-width: 700px) {
+      .footer-content {
+        grid-template-columns: 1fr;
+        justify-items: center;
+      }
+
+      .footer-links {
+        justify-content: center;
+      }
+
+      .footer {
+        padding: var(--space-6) var(--space-4);
+      }
+    }
   </style>
 </footer>
