@@ -5,6 +5,7 @@ import AboutVision from "@components/about/AboutVision.astro";
 import AboutStats from "@components/about/AboutStats.astro";
 import AboutValues from "@components/about/AboutValues.astro";
 import AboutTeam from "@components/about/AboutTeam.astro";
+import AboutFaq from "@components/about/AboutFaq.astro";
 ---
 
 <Layout>
@@ -13,5 +14,12 @@ import AboutTeam from "@components/about/AboutTeam.astro";
   <AboutStats />
   <AboutValues />
   <AboutTeam />
+  <AboutFaq />
 </Layout>
 
+<style>
+  :global(.page-layout) {
+    row-gap: 64px;
+    
+  }
+</style>
