@@ -1,0 +1,82 @@
+<section class="about-stats" aria-label="Our achievements">
+<div class="stats-inner">
+
+<div class="stat">
+<p class="stat-number">1128+</p>
+<p class="stat-label">Successful Work</p>
+</div>
+
+<div class="stat">
+<p class="stat-number">908+</p>
+<p class="stat-label">Team member</p>
+</div>
+
+<div class="stat">
+<p class="stat-number">258+</p>
+<p class="stat-label">Happy Customers</p>
+</div>
+
+<div class="stat">
+<p class="stat-number">564+</p>
+<p class="stat-label">Creative Idea</p>
+</div>
+</div>
+</section>
+
+<style>
+.about-stats {
+  grid-column: full;
+  display: grid;
+  grid-template-columns: subgrid;
+  padding-block-end: var(--space-6-5);
+}
+
+.stats-inner {
+  grid-column: content;  
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-6);
+  align-items: start;
+  width: 100%;
+}
+
+.stat {
+    text-align: center;
+     --flow-space: var(--space-2);
+  }
+
+.stat p {
+  margin: 0;
+}
+
+.stat > * + * {
+  margin-block-start: var(--flow-space);
+}
+
+.stat-number {
+color: var(--color-neutrals-900);
+font-family: var(--font-cabin);
+font-size: 50px;
+font-style: normal;
+font-weight: 700;
+line-height: 58px;
+}
+
+.stat-label {
+color: var(--color-neutrals-900);
+font-family: var(--font-cabin);
+font-size: 18px;
+font-style: normal;
+font-weight: 500;
+line-height: 20.88px;
+}
+
+@media (max-width:600px) {
+    .stats-inner {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: var(--space-3);
+        row-gap: var(--space-6);
+    }
+}
+
+</style>
