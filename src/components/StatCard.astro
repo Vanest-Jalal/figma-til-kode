@@ -87,6 +87,20 @@ const { label, value } = Astro.props;
     color: var(--color-text);
     text-align: center;
   }
+
+  /* Mobilversion af procentcirklerne */
+  @media (max-width: 700px) {
+    figure {
+      /* Fjerner den faste flex-størrelse fra desktop */
+      flex: none;
+
+      /* Giver alle cirkler samme bredde */
+      width: 150px;
+
+      /* Fjerner browserens standardafstand omkring figure */
+      margin: 0;
+    }
+  }
 </style>
 
 <!-- Animation til Doughnut Charts -->

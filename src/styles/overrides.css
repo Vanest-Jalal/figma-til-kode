@@ -1,6 +1,6 @@
 /* Override styles here */
 .flow {
   > * + * {
-    margin-top: 1em;
+    margin-top: var(--flow-space, 1em);
   }
 }

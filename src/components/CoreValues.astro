@@ -10,7 +10,7 @@ import CoreValueCard from "./CoreValueCard.astro";
   <div class="core-values-content">
     <!-- Sektionens overskrift, beskrivelse og knap -->
     <div class="core-values-header">
-      <div class="core-values-text">
+      <div class="core-values-text flow">
         <!-- Henter teksterne fra JSON-filen -->
         <span class="eyebrow">{coreValues.eyebrow}</span>
         <h2>{coreValues.title}</h2>
@@ -65,11 +65,12 @@ import CoreValueCard from "./CoreValueCard.astro";
   /* Begrænser tekstens bredde */
   .core-values-text {
     max-width: 650px;
+    --flow-space: var(--space-3);
   }
 
   /* Afstand omkring sektionens overskrift */
   .core-values-text h2 {
-    margin-block: var(--space-3);
+    margin: 0;
   }
 
   /* Lys, nedtonet tekst på den mørke baggrund */
@@ -103,5 +104,27 @@ import CoreValueCard from "./CoreValueCard.astro";
 
     mask-image: radial-gradient(ellipse, black, transparent 70%);
     pointer-events: none;
+  }
+
+  /* Tablet - viser 2 kort */
+  @media (max-width: 1000px) {
+    .core-values-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  /* Mobil - viser 1 kort */
+  @media (max-width: 700px) {
+    .core-values {
+      padding: var(--space-6) var(--space-4);
+    }
+    .core-values-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .core-values-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-4);
+    }
   }
 </style>
