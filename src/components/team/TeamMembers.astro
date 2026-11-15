@@ -46,6 +46,7 @@ const team = await getTeamMembers();
     .team-members {
       padding-block: var(--space-8);
       --flow-space: var(--space-7);
+      container-type: inline-size;
     }
 
     /* Header med tekst og knap */
@@ -75,14 +76,14 @@ const team = await getTeamMembers();
     }
 
     /* Tablet */
-    @media (max-width: 1000px) {
+    @container (max-width: 1000px) {
       .team-members-grid {
         grid-template-columns: repeat(2, 1fr);
       }
     }
 
     /* Mobil */
-    @media (max-width: 700px) {
+    @container (max-width: 700px) {
       .team-members-grid {
         grid-template-columns: 1fr;
       }
