@@ -67,13 +67,11 @@ import CEOImage from "@assets/images/ceo.webp";
     /* Hovedoverskrift i Hero */
     .hero-content h1 {
       color: var(--color-on-ui-primary);
-      margin: 0;
     }
 
     /* Beskrivende tekst i Hero */
     .hero-content p {
       color: var(--color-on-ui-primary-muted);
-      margin: 0;
     }
 
     .hero-image {
@@ -126,13 +124,13 @@ import CEOImage from "@assets/images/ceo.webp";
       background: linear-gradient(to right, transparent, var(--color-action));
       pointer-events: none;
     }
-  }
 
-  /* Mobilversion af Hero */
-  @media (max-width: 700px) {
-    .hero {
-      /* Ændrer Hero fra to kolonner til én kolonne */
-      grid-template-columns: 1fr;
+    /* Mobil */
+    @media (max-width: 700px) {
+      .hero {
+        /* Én kolonne */
+        grid-template-columns: 1fr;
+      }
     }
   }
 </style>

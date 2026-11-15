@@ -40,78 +40,79 @@ import Checkmark from "@icons/checkmark.svg";
 
 <!-- Styling  -->
 <style>
-  /* Farve og afstand på sektionens overskrift */
-  .expect-content h2 {
-    color: var(--color-ui-primary);
-    margin: 0;
-  }
+  @layer components {
+    /* Farve på sektionens overskrift */
+    .expect-content h2 {
+      color: var(--color-ui-primary);
+    }
 
-  /* Layout for billede og tekst */
-  .what-to-expect {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    gap: var(--space-8);
-  }
-
-  /* Styrer afstanden mellem sektionens tekstelementer */
-  .expect-content {
-    --flow-space: var(--space-4);
-  }
-
-  /* Container til billede og grøn dekoration */
-  .expect-image {
-    position: relative;
-  }
-
-  /* Grøn dekoration bag billedet */
-  .expect-image::before {
-    content: "";
-    position: absolute;
-    width: 183px;
-    height: 164px;
-    background-color: var(--color-ui-secondary);
-    border-radius: var(--radius-lg);
-    top: -24px;
-    left: -24px;
-    z-index: 0;
-  }
-
-  /* Billedet placeres foran den grønne dekoration */
-  .expect-image :global(img) {
-    display: block;
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    height: auto;
-    border-radius: var(--radius-md);
-  }
-
-  /* Liste med fordele */
-  .expect-content ul {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    gap: var(--space-4);
-  }
-
-  /* Placerer checkmark ved siden af teksten */
-  .expect-content li {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--space-3);
-  }
-
-  /* Grøn farve på SVG-checkmarks */
-  .expect-content li :global(svg) {
-    color: var(--color-ui-secondary-alternative);
-  }
-
-  /* Mobilversion af WhatToExpect */
-  @media (max-width: 700px) {
+    /* Layout for billede og tekst */
     .what-to-expect {
-      /* Placerer billedet og teksten under hinanden */
-      grid-template-columns: minmax(0, 1fr);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: var(--space-8);
+    }
+
+    /* Styrer afstanden mellem sektionens tekstelementer */
+    .expect-content {
+      --flow-space: var(--space-4);
+    }
+
+    /* Container til billede og grøn dekoration */
+    .expect-image {
+      position: relative;
+    }
+
+    /* Grøn dekoration bag billedet */
+    .expect-image::before {
+      content: "";
+      position: absolute;
+      width: 183px;
+      height: 164px;
+      background-color: var(--color-ui-secondary);
+      border-radius: var(--radius-lg);
+      top: -24px;
+      left: -24px;
+      z-index: 0;
+    }
+
+    /* Billedet placeres foran den grønne dekoration */
+    .expect-image :global(img) {
+      display: block;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-md);
+    }
+
+    /* Liste med fordele */
+    .expect-content ul {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      gap: var(--space-4);
+    }
+
+    /* Placerer checkmark ved siden af teksten */
+    .expect-content li {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+    }
+
+    /* Grøn farve på SVG-checkmarks */
+    .expect-content li :global(svg) {
+      color: var(--color-ui-secondary-alternative);
+    }
+
+    /* Mobil */
+    @media (max-width: 700px) {
+      .what-to-expect {
+        /* Placerer billedet og teksten under hinanden */
+        grid-template-columns: minmax(0, 1fr);
+      }
     }
   }
 </style>

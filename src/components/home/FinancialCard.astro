@@ -28,30 +28,22 @@ const Icon = Object.entries(icons).find(([name]) => name === item.icon)?.[1];
   {Icon && <Icon />}
   <h3>{item.title}</h3>
   <p>{item.description}</p>
+</article>
 
-  <!-- Styling -->
-  <style>
+<!-- Styling -->
+<style>
+  @layer components {
     /* Styling af de enkelte finansielle kort */
     .financial-card {
-      /* Styrer afstanden mellem ikon, overskrift og tekst */
       --flow-space: var(--space-2);
-
       padding: var(--space-5);
       background-color: var(--color-surface-tertiary);
       border-radius: var(--radius-md);
     }
 
-    /* Kortets overskrift */
-    .financial-card h3 {
-      font-family: var(--font-cabin);
-      color: var(--color-text);
-      margin: 0;
-    }
-
     /* Kortets beskrivelse */
     .financial-card p {
       color: var(--color-text-muted);
-      margin: 0;
     }
-  </style>
-</article>
+  }
+</style>

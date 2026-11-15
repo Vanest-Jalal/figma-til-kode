@@ -4,7 +4,7 @@ import Button from "./Button.astro";
 
 <!-- Newsletter-sektion -->
 <section class="newsletter">
-  <div class="newsletter-content">
+  <div class="newsletter-content flow">
     <span class="newsletter-label">Stay Updated</span>
     <h2>Subscribe Our Newsletter</h2>
     <p>
@@ -29,96 +29,94 @@ import Button from "./Button.astro";
 
 <!-- Styling -->
 <style>
-  /* Newsletter-sektionens baggrund og afstande */
-  .newsletter {
-    background-color: var(--color-ui-primary);
-    width: 100vw;
-    position: relative;
-    left: 50%;
-    margin-left: -50vw;
-    box-sizing: border-box;
-    padding: var(--space-8) var(--space-5);
-    text-align: center;
-    border-bottom: 1px solid var(--color-blue-600);
-  }
-
-  /* Centrerer indholdet */
-  .newsletter-content {
-    max-width: 1200px;
-    margin-inline: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-3);
-  }
-
-  /* Lille overskrift */
-  .newsletter-label {
-    font-size: 1rem;
-    letter-spacing: 0.145em;
-    text-transform: uppercase;
-    color: var(--color-action);
-  }
-
-  /* Hovedoverskrift */
-  .newsletter h2 {
-    font-size: 2.1875rem; /* 35px */
-    color: var(--color-on-ui-primary);
-  }
-
-  /* Beskrivelse */
-  .newsletter p {
-    font-size: 1rem;
-    color: var(--color-on-ui-primary-muted);
-  }
-
-  /* Fremhævet tekst */
-  .newsletter p strong {
-    color: var(--color-action);
-    font-weight: 700;
-  }
-
-  /* Afstand mellem teksten og formularen */
-  .newsletter-form {
-    margin-top: var(--space-3);
-  }
-
-  /* Styling af e-mailfeltet */
-  .newsletter-input {
-    background-color: var(--color-neutrals-900);
-    border: 1px solid var(--color-neutrals-400);
-    border-radius: var(--radius-pill);
-    padding: var(--space-3) var(--space-5);
-    color: var(--color-on-ui-primary);
-    font-family: var(--font-lato);
-  }
-      
-   /* Gør formularen responsiv */
-  @media (max-width: 600px) {
+  @layer components {
+    /* Newsletter-sektionens baggrund og afstande */
     .newsletter {
-      padding: var(--space-6) var(--space-4);
+      background-color: var(--color-ui-primary);
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      margin-left: -50vw;
+      box-sizing: border-box;
+      padding: var(--space-8) var(--space-5);
+      text-align: center;
+      border-bottom: 1px solid var(--color-blue-600);
     }
 
+    .newsletter-content {
+      max-width: 75rem;
+      margin-inline: auto;
+      --flow-space: var(--space-3);
+    }
+
+    /* Lille overskrift */
+    .newsletter-label {
+      font-size: 1rem;
+      letter-spacing: 0.145em;
+      text-transform: uppercase;
+      color: var(--color-action);
+    }
+
+    /* Hovedoverskrift */
     .newsletter h2 {
-      font-size: 1.5rem;
+      font-size: 2.1875rem; /* 35px */
+      color: var(--color-on-ui-primary);
     }
 
+    /* Beskrivelse */
+    .newsletter p {
+      font-size: 1rem;
+      color: var(--color-on-ui-primary-muted);
+    }
+
+    /* Fremhævet tekst */
+    .newsletter p strong {
+      color: var(--color-action);
+      font-weight: 700;
+    }
+
+    /* Afstand mellem teksten og formularen */
     .newsletter-form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: var(--space-3);
+      --flow-space: var(--space-5);
     }
 
+    /* Styling af e-mailfeltet */
     .newsletter-input {
-      width: 100%;
-      max-width: 350px;
+      background-color: var(--color-neutrals-900);
+      border: 1px solid var(--color-neutrals-400);
+      border-radius: var(--radius-pill);
+      padding: var(--space-3) var(--space-5);
+      color: var(--color-on-ui-primary);
+      font-family: var(--font-lato);
     }
-  }
 
-  /* Synlig markering ved tastaturnavigation */
-  .newsletter-input:focus-visible {
-    outline: 2px solid var(--color-action);
-    outline-offset: 3px;
+    /* Gør formularen responsiv */
+    @media (max-width: 600px) {
+      .newsletter {
+        padding: var(--space-6) var(--space-4);
+      }
+
+      .newsletter h2 {
+        font-size: 1.5rem;
+      }
+
+      .newsletter-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-3);
+      }
+
+      .newsletter-input {
+        width: 100%;
+        max-width: 350px;
+      }
+    }
+
+    /* Synlig markering ved tastaturnavigation */
+    .newsletter-input:focus-visible {
+      outline: 2px solid var(--color-action);
+      outline-offset: 3px;
+    }
   }
 </style>

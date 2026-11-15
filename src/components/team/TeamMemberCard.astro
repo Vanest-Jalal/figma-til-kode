@@ -80,7 +80,7 @@ const { name, role, description, image, slug } = Astro.props;
 
     /* Navn */
     .member-info h3 {
-      font-size: 1.875rem; /* 30px fra Figma */
+      font-size: 1.875rem; /* 30px */
       font-weight: 700;
       line-height: 1.16;
       color: var(--color-text);
@@ -88,10 +88,9 @@ const { name, role, description, image, slug } = Astro.props;
 
     /* Lille beskrivende tekst */
     .member-info p {
-      font-size: 1rem; /* 16px fra Figma */
-      line-height: 1.475;
+      font-size: 1rem; /* 16px */
       color: var(--color-text-muted);
-      max-width: 20.5rem; /* 328px fra Figma */
+      max-width: 20.5rem; /* 328px */
       margin-inline: auto;
     }
 
@@ -112,16 +111,16 @@ const { name, role, description, image, slug } = Astro.props;
 
     /* Sociale ikoner */
     .member-socials :global(svg) {
-      width: 1.5rem; /* 24px fra Figma */
+      width: 1.5rem; /* 24px */
       height: auto;
     }
-  }
 
-  /* Mobil */
-  @media (max-width: 700px) {
-    .member-image {
-      max-width: 350px;
-      margin-inline: auto;
+    /* Mobil */
+    @media (max-width: 700px) {
+      .member-image {
+        max-width: 350px;
+        margin-inline: auto;
+      }
     }
   }
 </style>

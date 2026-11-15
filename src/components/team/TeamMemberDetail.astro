@@ -152,43 +152,43 @@ const { employee } = Astro.props;
       border-radius: var(--radius-lg);
       z-index: -1;
     }
-  }
 
-  /* Tablet */
-  @media (max-width: 1000px) {
-    .team-detail-content {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: var(--space-6);
+    /* Tablet */
+    @media (max-width: 1000px) {
+      .team-detail-content {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--space-6);
+      }
+
+      .team-detail-image::before {
+        left: calc(-1 * var(--space-3));
+        top: calc(-1 * var(--space-3));
+      }
     }
 
-    .team-detail-image::before {
-      left: calc(-1 * var(--space-3));
-      top: calc(-1 * var(--space-3));
-    }
-  }
+    /* Mobil */
+    @media (max-width: 700px) {
+      .team-detail-content {
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+        --flow-space: var(--space-7);
+      }
 
-  /* Mobil */
-  @media (max-width: 700px) {
-    .team-detail-content {
-      grid-template-columns: 1fr;
-      gap: var(--space-6);
-      --flow-space: var(--space-7);
-    }
+      .team-detail-profile {
+        max-width: 350px;
+        width: 100%;
+        margin-inline: auto;
+      }
 
-    .team-detail-profile {
-      max-width: 350px;
-      width: 100%;
-      margin-inline: auto;
-    }
+      .team-detail-image::before {
+        width: 150px;
+        height: 120px;
+      }
 
-    .team-detail-image::before {
-      width: 150px;
-      height: 120px;
-    }
-
-    .team-detail-info {
-      max-width: 350px;
-      margin-inline: auto;
+      .team-detail-info {
+        max-width: 350px;
+        margin-inline: auto;
+      }
     }
   }
 </style>
