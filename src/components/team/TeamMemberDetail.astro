@@ -1,0 +1,155 @@
+---
+import { Image } from "astro:assets";
+import Instagram from "@icons/instagram.svg";
+import Facebook from "@icons/facebook.svg";
+import Button from "@components/shared/Button.astro";
+
+// Modtager medarbejderens oplysninger via props
+const { employee } = Astro.props;
+---
+
+<section class="team-detail flow">
+  <!-- Tilbage til medarbejderoversigten -->
+  <Button href="/team" variant="dark" showArrow={true} arrowDirection="left">
+    Back to team
+  </Button>
+  <div class="team-detail-content">
+    <!-- Profilbillede og sociale medier -->
+    <div class="team-detail-profile flow">
+      <div class="team-detail-image">
+        <Image
+          src={employee.image.src}
+          alt={employee.image.alt}
+          width={employee.image.width}
+          height={employee.image.height}
+        />
+      </div>
+
+      <div class="team-detail-socials">
+        <Instagram />
+        <Facebook />
+      </div>
+    </div>
+
+    <!-- Medarbejderens oplysninger -->
+    <div class="team-detail-info flow">
+      <div class="team-detail-heading flow">
+        <h1>{employee.name}</h1>
+        <p>{employee.title}</p>
+      </div>
+
+      <p>{employee.description_long}</p>
+
+      <hr />
+
+      <!-- Tidligere erfaring -->
+      <div class="team-detail-experience flow">
+        <h2>Past experience</h2>
+        <p>{employee.past_experience}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Styling -->
+<style>
+  @layer components {
+    /* Medarbejderens detaljeside */
+    .team-detail {
+      padding-top: var(--space-4);
+      padding-bottom: var(--space-8);
+      --flow-space: var(--space-7);
+    }
+
+    /* Layout med billede og tekst */
+    .team-detail-content {
+      display: grid;
+      grid-template-columns: 480px 1fr;
+      gap: var(--space-8);
+      align-items: start;
+      --flow-space: calc(var(--space-7) + var(--space-7));
+    }
+
+    /* Profilbillede */
+    .team-detail-image img {
+      width: 100%;
+      aspect-ratio: 1 / 1.07;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      display: block;
+    }
+
+    /* Medarbejderens oplysninger */
+    .team-detail-info {
+      --flow-space: var(--space-6);
+    }
+
+    .team-detail-info > .team-detail-experience {
+      --flow-space: var(--space-7);
+    }
+
+    .team-detail-experience > * {
+      --flow-space: var(--space-3);
+    }
+
+    /* Navn og jobtitel */
+    .team-detail-heading {
+      --flow-space: var(--space-1);
+    }
+
+    .team-detail-heading h1 {
+      font-size: 2.8125rem; /* 45px fra Figma */
+      line-height: 1.16;
+    }
+
+    /* Beskrivende tekst */
+    .team-detail-info p {
+      font-size: 1rem;
+      color: var(--color-text-muted);
+    }
+
+    /* Tidligere erfaring */
+    .team-detail-experience {
+      --flow-space: var(--space-3);
+    }
+
+    .team-detail-experience h2 {
+      font-size: 1.875rem; /* 30px */
+    }
+
+    /* Sociale medier */
+    .team-detail-profile {
+      --flow-space: var(--space-3);
+    }
+
+    .team-detail-socials {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: var(--space-4);
+    }
+
+    .team-detail-socials :global(svg) {
+      width: 1.5rem; /* 24px */
+      height: auto;
+    }
+
+    /* Grøn dekoration bag profilbilledet */
+    .team-detail-image {
+      position: relative;
+      isolation: isolate;
+    }
+
+    .team-detail-image::before {
+      content: "";
+      position: absolute;
+      top: -41px;
+      left: -53px;
+      width: 233px;
+      height: 164px;
+      background-color: var(--color-ui-secondary);
+      border-radius: var(--radius-lg);
+      z-index: -1;
+    }
+  }
+</style>
