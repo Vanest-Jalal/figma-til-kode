@@ -1,0 +1,77 @@
+---
+//@ts-nocheck
+import TeamMemberCard from "./TeamMemberCard.astro";
+import Button from "@components/shared/Button.astro";
+import { getTeamMembers } from "@lib/api";
+
+// Henter medarbejderne fra API'et
+const team = await getTeamMembers();
+---
+
+<section class="team-members">
+  <!-- Introduktion til medarbejdersektionen -->
+  <div class="team-members-header">
+    <div>
+      <h2>Meet Our Great Team</h2>
+      <p>
+        Welcome to our amazing team! We are a group of passionate individuals
+        dedicated to excellence and innovation. Each member brings unique skills
+        and experiences, working together to achieve our goals. Join us as we
+        embark on exciting projects and create lasting impacts.
+      </p>
+    </div>
+    <!-- Join our team-knap -->
+    <Button variant="dark">Join our team</Button>
+  </div>
+  <!-- Medarbejderkort -->
+  <div class="team-members-grid">
+    {
+      team.map((employee) => (
+        <TeamMemberCard
+          name={employee.name}
+          role={employee.title}
+          description={employee.description}
+          image={employee.image}
+          slug={employee.slug}
+        />
+      ))
+    }
+  </div>
+</section>
+
+<!-- Styling -->
+<style>
+  @layer components {
+    /* Team-sektion */
+    .team-members {
+      padding-block: var(--space-8);
+    }
+
+    /* Header med tekst og knap */
+    .team-members-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-6);
+    }
+
+    /* Overskrift og beskrivelse */
+    .team-members-header > div {
+      max-width: 600px;
+    }
+
+    /* Lille beskrivende tekst */
+    .team-members-header p {
+      margin-top: var(--space-4);
+      color: var(--color-text-muted);
+    }
+
+    /* Medarbejderkort */
+    .team-members-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+      margin-top: var(--space-7);
+    }
+  }
+</style>
