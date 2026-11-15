@@ -61,6 +61,12 @@ const { variant = "primary", showArrow = false } = Astro.props;
     line-height: 1.6;
   }
 
+  /* Mørk knap til lyse baggrunde */
+  .button.dark {
+    background-color: var(--color-ui-primary);
+    color: var(--color-on-ui-primary);
+  }
+
   /* Styling af pil */
   .button :global(svg) {
     width: 16px;

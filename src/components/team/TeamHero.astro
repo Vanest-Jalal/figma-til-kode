@@ -1,0 +1,58 @@
+---
+
+---
+
+<!-- Team-sidens introduktion -->
+<section class="team-hero">
+  <div class="team-hero-content flow">
+    <!-- Overskrift og beskrivelse -->
+    <span class="eyebrow">Team</span>
+    <h1>The Consultors</h1>
+    <p>
+      Our success stems from the synergy between dedicated teams and our valued
+      clients. We prioritize a company culture that fosters exceptional
+      productivity, ensures customer satisfaction.
+    </p>
+  </div>
+</section>
+
+<!-- Styling -->
+<style>
+  @layer components {
+    .team-hero {
+      padding: var(--space-8) var(--space-5);
+      text-align: center;
+      background-color: var(--color-surface-secondary);
+      overflow: hidden; /* Holder den gule linje inden for sektionen */
+    }
+
+    /* Overskrift og beskrivelse */
+    .team-hero-content {
+      max-width: 700px;
+      margin-inline: auto;
+      --flow-space: var(--space-5);
+    }
+
+    /* Lille beskrivende tekst */
+    .team-hero p {
+      color: var(--color-text-muted);
+    }
+
+    /* Gul dekorativ linje under overskriften */
+    .team-hero h1 {
+      position: relative;
+      width: fit-content;
+      margin-inline: auto;
+    }
+
+    .team-hero h1::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 100vw;
+      height: 5px;
+      background-color: var(--color-action);
+    }
+  }
+</style>
