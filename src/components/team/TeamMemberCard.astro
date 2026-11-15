@@ -116,4 +116,12 @@ const { name, role, description, image, slug } = Astro.props;
       height: auto;
     }
   }
+
+  /* Mobil */
+  @media (max-width: 700px) {
+    .member-image {
+      max-width: 350px;
+      margin-inline: auto;
+    }
+  }
 </style>
