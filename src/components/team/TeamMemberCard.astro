@@ -1,0 +1,126 @@
+---
+import { Image } from "astro:assets";
+import Instagram from "@icons/instagram.svg";
+import Facebook from "@icons/facebook.svg";
+
+// Modtager medarbejderens oplysninger via props
+const { name, role, description, image, slug } = Astro.props;
+---
+
+<article class="team-member-card flow">
+  <!-- Medarbejderens billede og jobtitel -->
+  <div class="member-image">
+    <a href={`/team/${slug}`} aria-label={`Read more about ${name}`}>
+      <Image
+        src={image.src}
+        alt={image.alt}
+        width={image.width}
+        height={image.height}
+      />
+    </a>
+    <span class="member-role">{role}</span>
+  </div>
+
+  <!-- Medarbejderens navn og beskrivelse -->
+  <div class="member-info flow">
+    <!-- Link til medarbejderens detaljeside -->
+    <h3>
+      <a href={`/team/${slug}`}>{name}</a>
+    </h3>
+    <p>{description}</p>
+
+    <!-- Medarbejderens sociale medier -->
+    <div class="member-socials">
+      <Instagram />
+      <Facebook />
+    </div>
+  </div>
+</article>
+
+<!-- Styling -->
+<style>
+  @layer components {
+    .team-member-card {
+      text-align: center;
+      --flow-space: var(--space-5);
+    }
+
+    .member-image {
+      position: relative;
+    }
+
+    .member-image img {
+      width: 100%;
+      aspect-ratio: 1 / 1.07;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      display: block;
+    }
+
+    /* Link på profilbillede */
+    .member-image a {
+      display: block;
+    }
+
+    .member-role {
+      position: absolute;
+      bottom: var(--space-2);
+      right: var(--space-2);
+      background-color: var(--color-ui-primary);
+      color: var(--color-on-ui-primary);
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-pill);
+      font-size: 0.875rem;
+    }
+
+    /* Medarbejderens oplysninger */
+    .member-info {
+      --flow-space: var(--space-3);
+    }
+
+    /* Navn */
+    .member-info h3 {
+      font-size: 1.875rem; /* 30px */
+      font-weight: 700;
+      line-height: 1.16;
+      color: var(--color-text);
+    }
+
+    /* Lille beskrivende tekst */
+    .member-info p {
+      font-size: 1rem; /* 16px */
+      color: var(--color-text-muted);
+      max-width: 20.5rem; /* 328px */
+      margin-inline: auto;
+    }
+
+    /* Link til medarbejderens detaljeside */
+    .member-info a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Sociale medier */
+    .member-socials {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: var(--space-5);
+      --flow-space: var(--space-5);
+    }
+
+    /* Sociale ikoner */
+    .member-socials :global(svg) {
+      width: 1.5rem; /* 24px */
+      height: auto;
+    }
+
+    /* Mobil */
+    @media (max-width: 700px) {
+      .member-image {
+        max-width: 350px;
+        margin-inline: auto;
+      }
+    }
+  }
+</style>

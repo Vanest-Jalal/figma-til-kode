@@ -1,9 +1,10 @@
 ---
 //@ts-nocheck
 import { getTeamMembers } from "@lib/api";
-import { Image } from "astro:assets";
 import Layout from "@layouts/Layout.astro";
+import TeamMemberDetail from "@components/team/TeamMemberDetail.astro";
 
+// Opretter en dynamisk side for hver medarbejder
 export async function getStaticPaths() {
   const team = await getTeamMembers();
 
@@ -17,14 +18,5 @@ const { employee } = Astro.props;
 ---
 
 <Layout>
-  <Image
-    src={employee.image.src}
-    alt={employee.image.alt}
-    width={employee.image.width}
-    height={employee.image.height}
-  />
-  <h2>{employee.name}</h2>
-  <p>{employee.description_long}</p>
-  <h3>Past Experience</h3>
-  <p>{employee.past_experience}</p>
+  <TeamMemberDetail employee={employee} />
 </Layout>

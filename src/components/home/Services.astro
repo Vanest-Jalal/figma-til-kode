@@ -26,23 +26,24 @@ try {
   {serviceData.map((service) => <ServiceCard service={service} />)}
 </div>
 
+<!-- Styling -->
 <style>
   @layer components {
+    /* Layout til de tre servicekort */
     .services {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 1.25rem; /* 20px */
-      max-width: 1200px;
+      max-width: 75rem;
       width: 100%;
       margin-inline: auto;
     }
-  }
 
-  /* Mobilversion af Services */
-  @media (max-width: 700px) {
-    .services {
-      /* Placerer servicekortene under hinanden */
-      grid-template-columns: minmax(0, 1fr);
+    /* Mobil */
+    @media (max-width: 700px) {
+      .services {
+        grid-template-columns: minmax(0, 1fr);
+      }
     }
   }
 </style>

@@ -112,98 +112,109 @@ try {
 </script>
 
 <style>
-  /* Sektionens baggrund fylder hele skærmens bredde */
-  .financial-projections {
-    background-color: var(--color-surface-secondary);
-    padding: var(--space-8);
-    box-sizing: border-box;
-    width: 100vw;
-    position: relative;
-    left: 50%;
-    margin-left: -50vw;
-  }
-
-  /* Centrerer indholdet inden for sektionen */
-  .financial-content {
-    max-width: 1200px;
-    margin-inline: auto;
-  }
-
-  /* Farve og afstand på overskriften */
-  .financial-projections h2 {
-    color: var(--color-text);
-    margin: 0;
-  }
-
-  /* Farve og bredde på beskrivelsen */
-  .financial-projections p {
-    color: var(--color-text-muted);
-    max-width: 645px;
-  }
-
-  /* Placerer kortene på én række med glidende animation */
-  .financial-cards {
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: calc((100% - 3 * var(--space-5)) / 4);
-    gap: var(--space-5);
-    margin-top: var(--space-8);
-    transition: transform 0.4s ease;
-  }
-
-  /* Navigationsknapperne */
-  .financial-navigation {
-    display: flex;
-    gap: var(--space-2);
-  }
-
-  .financial-navigation button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
-    border: none;
-    border-radius: 50%;
-    background-color: var(--color-neutrals-900);
-    color: white;
-    cursor: pointer;
-  }
-
-  .financial-navigation button svg {
-    width: 20px;
-    height: 20px;
-  }
-
-  /* Placerer tekst og navigationspile ved siden af hinanden */
-  .financial-header {
-    display: flex;
-    align-items: flex-end;
-    gap: var(--space-6-5);
-  }
-
-  /* Bestemmer bredden og afstanden i tekstområdet */
-  .financial-text {
-    flex: 0 1 645px;
-    --flow-space: var(--space-2);
-  }
-
-  /* Skjuler kortene uden for sliderens synlige område */
-  .financial-slider {
-    overflow: hidden;
-  }
-
-  /* Tablet – viser to kort ad gangen */
-  @media (max-width: 1000px) {
-    .financial-cards {
-      grid-auto-columns: calc((100% - var(--space-5)) / 2);
+  @layer components {
+    .financial-projections {
+      background-color: var(--color-surface-secondary);
+      padding: var(--space-8);
+      box-sizing: border-box;
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      margin-left: -50vw;
     }
-  }
 
-  /* Mobil – viser ét kort ad gangen */
-  @media (max-width: 700px) {
+    .financial-content {
+      max-width: 1200px;
+      margin-inline: auto;
+    }
+
+    /* Farve og bredde på beskrivelsen */
+    .financial-projections p {
+      color: var(--color-text-muted);
+      max-width: 645px;
+    }
+
+    /* Placerer kortene på én række med glidende animation */
     .financial-cards {
-      grid-auto-columns: 100%;
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: calc((100% - 3 * var(--space-5)) / 4);
+      gap: var(--space-5);
+      margin-top: var(--space-8);
+      transition: transform 0.4s ease;
+    }
+
+    /* Navigationsknapperne */
+    .financial-navigation {
+      display: flex;
+      gap: var(--space-2);
+    }
+
+    .financial-navigation button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border: none;
+      border-radius: 50%;
+      background-color: var(--color-ui-primary);
+      color: var(--color-on-ui-primary);
+      cursor: pointer;
+    }
+
+    .financial-navigation button svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Placerer tekst og navigationspile ved siden af hinanden */
+    .financial-header {
+      display: flex;
+      align-items: flex-end;
+      gap: var(--space-6-5);
+    }
+
+    /* Bestemmer bredden og afstanden i tekstområdet */
+    .financial-text {
+      flex: 0 1 645px;
+      --flow-space: var(--space-2);
+    }
+
+    /* Skjuler kortene uden for sliderens synlige område */
+    .financial-slider {
+      overflow: hidden;
+    }
+
+    /* Tablet */
+    @media (max-width: 1000px) {
+      .financial-cards {
+        grid-auto-columns: calc((100% - var(--space-5)) / 2);
+      }
+    }
+
+    /* Mobil */
+    @media (max-width: 700px) {
+      .financial-projections {
+        padding: var(--space-6) var(--space-4);
+      }
+
+      .financial-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--space-4);
+      }
+
+      .financial-text {
+        flex: auto;
+      }
+
+      .financial-navigation {
+        justify-content: flex-end;
+      }
+      .financial-cards {
+        grid-auto-columns: 100%;
+      }
     }
   }
 </style>

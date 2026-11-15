@@ -1,7 +1,5 @@
 ---
 // @ts-nocheck
-
-// Importerer komponenten til hver procentcirkel
 import StatCard from "./StatCard.astro";
 
 // Modtager statistik fra Experience.astro
@@ -14,21 +12,21 @@ const { stats } = Astro.props;
 </div>
 
 <style>
-  /* Placerer procentcirklerne ved siden af hinanden */
-  .stat-list {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
-    gap: var(--space-6);
-  }
-
-  /* Mobilversion af procentcirklerne */
-  @media (max-width: 700px) {
+  @layer components {
+    /* Placerer procentcirklerne ved siden af hinanden */
     .stat-list {
-      /* Placerer procentcirklerne under hinanden */
-      flex-direction: column;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: var(--space-6);
+    }
+
+    /* Mobil */
+    @media (max-width: 700px) {
+      .stat-list {
+        /* Placerer procentcirklerne under hinanden */
+        flex-direction: column;
+      }
     }
   }
 </style>

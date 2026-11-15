@@ -1,8 +1,5 @@
 ---
-// Importerer statistikken fra den eksisterende JSON-fil
 import experienceData from "../../data/experience.json";
-
-// Importerer komponenten med procentcirklerne
 import StatList from "./StatList.astro";
 ---
 
@@ -25,47 +22,46 @@ import StatList from "./StatList.astro";
 
 <!-- Styling -->
 <style>
-  /* Sektionens gule baggrund */
-  .experience {
-    display: flex;
-    align-items: center;
-    background-color: var(--color-surface-highlight);
-    padding: var(--space-6-5);
-    width: 100vw;
-    min-height: 528px;
-    position: relative;
-    left: 50%;
-    margin-left: -50vw;
-    box-sizing: border-box;
-  }
+  @layer components {
+    /* Sektionens gule baggrund */
+    .experience {
+      display: flex;
+      align-items: center;
+      background-color: var(--color-surface-highlight);
+      padding: var(--space-6-5);
+      width: 100vw;
+      min-height: 528px;
+      position: relative;
+      left: 50%;
+      margin-left: -50vw;
+      box-sizing: border-box;
+    }
 
-  /* Placerer tekst og procentcirkler ved siden af hinanden */
-  .experience-content {
-    width: 100%;
-    max-width: 1200px;
-    margin-inline: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-6);
-  }
-
-  /* Styrer afstanden mellem tekstelementerne */
-  .experience-text {
-    --flow-space: var(--space-4);
-  }
-
-  /* Beskrivelse med mindre skriftstørrelse */
-  .experience-text p {
-    font-size: 1rem; /* 16px */
-    margin: 0;
-  }
-
-  /* Tilpasser Experience til tablet og mobil */
-  @media (max-width: 1000px) {
+    /* Placerer tekst og procentcirkler ved siden af hinanden */
     .experience-content {
-      /* Placerer teksten over procentcirklerne */
-      flex-direction: column;
+      width: 100%;
+      max-width: 75rem;
+      margin-inline: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-6);
+    }
+
+    .experience-text {
+      --flow-space: var(--space-4);
+    }
+
+    .experience-text p {
+      font-size: 1rem; /* 16px */
+    }
+
+    /* Tilpasser Experience til tablet og mobil */
+    @media (max-width: 1000px) {
+      .experience-content {
+        /* Placerer teksten over procentcirklerne */
+        flex-direction: column;
+      }
     }
   }
 </style>
