@@ -7,20 +7,22 @@ import Facebook from "@icons/facebook.svg";
 const { name, role, description, image, slug } = Astro.props;
 ---
 
-<article class="team-member-card">
+<article class="team-member-card flow">
   <!-- Medarbejderens billede og jobtitel -->
   <div class="member-image">
-    <Image
-      src={image.src}
-      alt={image.alt}
-      width={image.width}
-      height={image.height}
-    />
+    <a href={`/team/${slug}`} aria-label={`Read more about ${name}`}>
+      <Image
+        src={image.src}
+        alt={image.alt}
+        width={image.width}
+        height={image.height}
+      />
+    </a>
     <span class="member-role">{role}</span>
   </div>
 
   <!-- Medarbejderens navn og beskrivelse -->
-  <div class="member-info">
+  <div class="member-info flow">
     <!-- Link til medarbejderens detaljeside -->
     <h3>
       <a href={`/team/${slug}`}>{name}</a>
@@ -40,6 +42,7 @@ const { name, role, description, image, slug } = Astro.props;
   @layer components {
     .team-member-card {
       text-align: center;
+      --flow-space: var(--space-5);
     }
 
     .member-image {
@@ -51,6 +54,11 @@ const { name, role, description, image, slug } = Astro.props;
       aspect-ratio: 1 / 1.07;
       object-fit: cover;
       border-radius: var(--radius-lg);
+      display: block;
+    }
+
+    /* Link på profilbillede */
+    .member-image a {
       display: block;
     }
 
@@ -67,7 +75,7 @@ const { name, role, description, image, slug } = Astro.props;
 
     /* Medarbejderens oplysninger */
     .member-info {
-      padding-top: var(--space-5);
+      --flow-space: var(--space-3);
     }
 
     /* Navn */
@@ -76,7 +84,6 @@ const { name, role, description, image, slug } = Astro.props;
       font-weight: 700;
       line-height: 1.16;
       color: var(--color-text);
-      margin-bottom: var(--space-3);
     }
 
     /* Lille beskrivende tekst */
@@ -100,7 +107,7 @@ const { name, role, description, image, slug } = Astro.props;
       justify-content: center;
       align-items: center;
       gap: var(--space-5);
-      margin-top: var(--space-5);
+      --flow-space: var(--space-5);
     }
 
     /* Sociale ikoner */

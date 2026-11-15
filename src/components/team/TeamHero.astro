@@ -4,7 +4,7 @@
 
 <!-- Team-sidens introduktion -->
 <section class="team-hero">
-  <div class="team-hero-content">
+  <div class="team-hero-content flow">
     <!-- Overskrift og beskrivelse -->
     <span class="eyebrow">Team</span>
     <h1>The Consultors</h1>
@@ -20,20 +20,21 @@
 <style>
   @layer components {
     .team-hero {
-      padding: var(--space-6-5) var(--space-5);
+      padding: var(--space-8) var(--space-5);
       text-align: center;
       background-color: var(--color-surface-secondary);
       overflow: hidden; /* Holder den gule linje inden for sektionen */
     }
 
+    /* Overskrift og beskrivelse */
     .team-hero-content {
       max-width: 700px;
       margin-inline: auto;
+      --flow-space: var(--space-5);
     }
 
-    /* Afstand og farve på beskrivelsen */
+    /* Lille beskrivende tekst */
     .team-hero p {
-      margin-top: var(--space-5);
       color: var(--color-text-muted);
     }
 

@@ -8,10 +8,10 @@ import { getTeamMembers } from "@lib/api";
 const team = await getTeamMembers();
 ---
 
-<section class="team-members">
+<section class="team-members flow">
   <!-- Introduktion til medarbejdersektionen -->
   <div class="team-members-header">
-    <div>
+    <div class="flow">
       <h2>Meet Our Great Team</h2>
       <p>
         Welcome to our amazing team! We are a group of passionate individuals
@@ -45,6 +45,7 @@ const team = await getTeamMembers();
     /* Team-sektion */
     .team-members {
       padding-block: var(--space-8);
+      --flow-space: var(--space-7);
     }
 
     /* Header med tekst og knap */
@@ -58,11 +59,11 @@ const team = await getTeamMembers();
     /* Overskrift og beskrivelse */
     .team-members-header > div {
       max-width: 600px;
+      --flow-space: var(--space-4);
     }
 
     /* Lille beskrivende tekst */
     .team-members-header p {
-      margin-top: var(--space-4);
       color: var(--color-text-muted);
     }
 
@@ -71,7 +72,6 @@ const team = await getTeamMembers();
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: var(--space-6);
-      margin-top: var(--space-7);
     }
   }
 </style>
