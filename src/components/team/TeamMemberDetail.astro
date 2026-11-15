@@ -98,8 +98,7 @@ const { employee } = Astro.props;
     }
 
     .team-detail-heading h1 {
-      font-size: 2.8125rem; /* 45px fra Figma */
-      line-height: 1.16;
+      font-size: 2.8125rem; /* 45px */
     }
 
     /* Beskrivende tekst */
@@ -108,13 +107,15 @@ const { employee } = Astro.props;
       color: var(--color-text-muted);
     }
 
-    /* Tidligere erfaring */
-    .team-detail-experience {
-      --flow-space: var(--space-3);
+    /* Medarbejderens jobtitel */
+    .team-detail-heading p {
+      font-family: var(--font-cabin);
+      font-size: 1.25rem; /* 20px */
+      line-height: 1.16;
     }
 
     .team-detail-experience h2 {
-      font-size: 1.875rem; /* 30px */
+      font-size: 2.1875rem; /* 35px */
     }
 
     /* Sociale medier */
@@ -150,6 +151,44 @@ const { employee } = Astro.props;
       background-color: var(--color-ui-secondary);
       border-radius: var(--radius-lg);
       z-index: -1;
+    }
+  }
+
+  /* Tablet */
+  @media (max-width: 1000px) {
+    .team-detail-content {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-6);
+    }
+
+    .team-detail-image::before {
+      left: calc(-1 * var(--space-3));
+      top: calc(-1 * var(--space-3));
+    }
+  }
+
+  /* Mobil */
+  @media (max-width: 700px) {
+    .team-detail-content {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+      --flow-space: var(--space-7);
+    }
+
+    .team-detail-profile {
+      max-width: 350px;
+      width: 100%;
+      margin-inline: auto;
+    }
+
+    .team-detail-image::before {
+      width: 150px;
+      height: 120px;
+    }
+
+    .team-detail-info {
+      max-width: 350px;
+      margin-inline: auto;
     }
   }
 </style>
