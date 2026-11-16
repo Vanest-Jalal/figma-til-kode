@@ -3,6 +3,7 @@
 import { getCaseStudies } from "@lib/api";
 import { Image } from "astro:assets";
 import Layout from "@layouts/Layout.astro";
+import CaseHero from "@components/case-studies/CaseHero.astro";
 
 export async function getStaticPaths() {
   const caseStudies = await getCaseStudies();
@@ -18,6 +19,8 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
 ---
 
 <Layout>
+  <CaseHero />
+
   <article class="case-story-article">
     <header>
       <Image
@@ -41,18 +44,23 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
             <dd class="date">{date}</dd>
           </div>
         </dl>
-        <a href="#0" class="button">{buttonLabel}</a>
+        <a href="#project-result" class="button">{buttonLabel}</a>
+          
       </div>
     </header>
     <section class="case-story-content">
       {
         caseStudy.sections.map((section, index) => (
           <>
-            {index === 0 ? (
-              <h2>{section.title}</h2>
-            ) : (
-              <h3>{section.title}</h3>
-            )}
+              {index === 0 ? (
+                    <h2>{section.title}</h2>
+                  ) : (
+                    <h3
+                    id={section.title.toLowerCase().trim() === "project result" ? "project-result" : undefined}
+                  >
+                    {section.title}
+                  </h3>
+                  )}
 
             {Array.isArray(section.content) ? (
               <>
@@ -90,4 +98,192 @@ const { caseName, category, date, image, buttonLabel } = caseStudy.caseDetails;
   </article>
 </Layout>
 
-<style></style>
+<style>
+  .case-story-article{
+    grid-column: content;
+    width: 100%;
+    max-width: 1000px;
+    margin-inline: auto;
+    margin-top: var(--space-8);
+  }
+
+  .case-story-article > header > :global(img) {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 30px;
+  }
+
+  .case-story-article > header {
+  position: relative;
+}
+
+.case-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+
+
+  position: relative;
+  z-index: 1;
+  max-width: 850px;
+  margin: -40px auto 0;
+  padding: 24px 32px;
+  background-color: var(--color-ui-primary);
+  color: white;
+  border-radius: 20px;
+}
+
+.case-details dl {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin: 0;
+}
+
+.case-details dt {
+  font-size: 20px;
+  font-weight: 500;
+  font-family: var(--font-cabin);
+  margin-bottom: 8px;
+  line-height: 23.2px;
+  color: var(--color-on-ui-primary)
+}
+
+.case-details dd {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: var(--font-cabin);
+  line-height: 18.56px;
+  color: var(--color-on-ui-primary);
+}
+
+.button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  padding: 15px 34px;
+  border-radius: 42px;
+
+  background: var(--color-action);
+  color: var(--color-neutrals-900);
+
+  font-family: var(--font-lato);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 28.8px;
+  text-decoration: none;
+}
+
+.case-story-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 720px) minmax(0, 1fr);
+  padding-block: 64px;
+}
+
+.case-story-content > * {
+  grid-column: 2;
+}
+
+
+
+
+.case-story-content h2,
+.case-story-content h3 {
+  font-family: var(--font-cabin);
+  margin-block: 0 15px;
+  font-weight: 700;
+  font-size: 30px;
+}
+
+.case-story-content p {
+  margin-bottom: var(--space-5);
+  line-height: 1.5;
+  font-family: var(--font-lato);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(  --color-text-muted);
+}
+
+.case-story-content ul {
+  margin-bottom: var(--space-8);
+  color: var(  --color-text-muted);
+}
+
+.case-story-content figure {
+  grid-column: 1 / -1;
+  position: relative;
+  margin-block: 29px;
+}
+
+.case-story-content figure :global(img) {
+  display: block;
+  width: 100%;
+  height: auto;
+  
+}
+
+.case-story-content figcaption {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 48px);
+  text-align: center;
+  margin: 0;
+  color: var(--color-on-ui-primary);
+  font-family: var(--font-lato);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+  z-index: 1;
+}
+
+.case-story-content figure::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 65%,
+    rgba(0, 0, 0, 0.95) 100%
+  );
+  pointer-events: none;
+}
+
+
+@media (max-width: 600px) {
+  .case-story-content {
+    grid-template-columns: minmax(0, 1fr);
+    padding-inline: 16px;
+  }
+
+  .case-story-content > *,
+  .case-story-content figure {
+    grid-column: 1;
+  }
+
+  .case-details {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+    padding: 24px;
+  }
+
+  .case-details dl {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .button {
+    align-self: flex-start;
+  }
+}
+
+
+</style>

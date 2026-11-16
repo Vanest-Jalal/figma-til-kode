@@ -1,72 +1,237 @@
+---
+import { Image } from "astro:assets";
+import { getTeamMembers } from "@lib/api";
+
+const team = await getTeamMembers();
+
+const selectedMembers = ["Sarah Jasmine", "John Carter"]
+  .map((name) =>
+    team.find((employee: { name: string }) => employee.name === name)
+  )
+  .filter((employee) => employee !== undefined);
+---
+
 <section class="about-team">
   <div class="team-inner">
+
     <div class="team-content">
       <p class="eyebrow">OUR TEAM</p>
       <h2>We champion the bold</h2>
-      <p>
-        Our success stems from the synergy between dedicated teams and our valued clients. 
-        We prioritize a company culture that fosters exceptional productivity, ensures customer satisfaction.
-      </p>
-        <a href="/team" class="team-button">Meet the Team</a>
-    </div>
-    <div class="team-members">
 
+      <p class="team-description">
+        Our success stems from the synergy between dedicated teams and our
+        valued clients. We prioritize a company culture that fosters exceptional
+        productivity, ensures customer satisfaction.
+      </p>
+
+      <a href="/team" class="team-button">Meet the Team</a>
     </div>
-        </div>
-  
+
+    <div class="team-members">
+      {selectedMembers.map((employee) => (
+        <article class="about-member">
+
+          <a href={`/team/${employee.slug}`} class="member-image">
+            <Image
+              src={employee.image.src}
+              alt={employee.image.alt}
+              width={employee.image.width}
+              height={employee.image.height}
+            />
+          </a>
+
+          <div class="about-member-info">
+            <h3>
+              <a href={`/team/${employee.slug}`}>{employee.name}</a>
+            </h3>
+
+            <p class="member-title">{employee.title}</p>
+
+            <p class="member-description">
+              {employee.description}
+            </p>
+          </div>
+
+        </article>
+      ))}
+    </div>
+
+  </div>
 </section>
 
 <style>
-.about-team {
-  grid-column: full;
-  display: grid;
-  grid-template-columns: subgrid;
-  padding-block: var(--space-8);
+  .about-team {
+    grid-column: full;
+    display: grid;
+    grid-template-columns: subgrid;
+    padding-block: var(--space-8);
+  }
+
+  .team-inner {
+    grid-column: content;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+    gap: 32px;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    justify-self: center;
+  }
+
+  /* Venstre side */
+
+  .team-content .eyebrow {
+    font-family: var(--font-lato);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.475;
+    letter-spacing: 2.32px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .team-content h2 {
+    font-family: var(--font-cabin);
+    font-size: 45px;
+    font-weight: 700;
+    line-height: 1.16;
+    margin: 0 0 11px;
+  }
+
+  .team-description {
+    font-family: var(--font-lato);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.475;
+    color: var(--color-text-muted);
+    margin: 0 0 24px;
+  }
+
+  .team-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    padding: 15px 34px;
+    border-radius: 42px;
+    background: var(--color-ui-primary);
+    color: var(--color-on-ui-primary);
+    font-family: var(--font-lato);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.6;
+    text-decoration: none;
+  }
+
+  /* Højre side */
+
+  .team-members {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    min-width: 0;
+  }
+
+  .about-member {
+    display: grid;
+    grid-template-columns: 180px minmax(0, 1fr);
+    gap: 32px;
+    align-items: center;
+  }
+
+  .member-image {
+    display: block;
+  }
+
+  .member-image :global(img) {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1.07;
+    height: auto;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+  }
+
+  .about-member-info {
+    min-width: 0;
+  }
+
+  .about-member-info h3 {
+    font-family: var(--font-cabin);
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.16;
+    margin: 0 0 12px;
+  }
+
+  .about-member-info h3 a {
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .member-title {
+    font-family: var(--font-lato);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.6;
+    margin: 0 0 12px;
+  }
+
+  .member-description {
+    font-family: var(--font-lato);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.475;
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+
+
+
+  @media (max-width: 600px) {
+    .about-team {
+      padding-block: var(--space-6);
+    }
+
+    .team-content h2 {
+      font-size: 32px;
+    }
+
+    .team-members {
+      gap: 24px;
+    }
+
+    .about-member {
+      grid-template-columns: 110px minmax(0, 1fr);
+      gap: 16px;
+    }
+
+    .about-member-info h3 {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .member-title {
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .member-description {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .team-inner {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 40px;
 }
 
-.team-content h2 {
-  font-family: var(--font-cabin);
-  font-size: 45px;
-  font-weight: 700;
-  line-height: 1.16;
-}
-
-.team-content > p:not(.eyebrow) {
-  font-family: var(--font-lato);
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.475;
-  color: var(--color-text-muted);
-}
-
-.team-inner {
-  grid-column: content;
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-  gap: var(--space-6);
-  align-items: center;
-
+.team-content {
   width: 100%;
-  max-width: 1000px;
-  justify-self: center;
 }
 
-.team-button{
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  justify-self: end;
-  width: fit-content;
-  padding: 15px 34px;
-  border-radius: 42px;
-
-background: var(--color-ui-primary, #030712);
-color: var(--color-on-ui-primary, #F9FAFB);
-
-  font-family: var(--font-lato);
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 28.8px;
-  text-decoration: none;
+.team-members {
+  width: 100%;
 }
+  }
 </style>

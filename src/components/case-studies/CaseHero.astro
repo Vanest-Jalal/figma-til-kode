@@ -1,0 +1,65 @@
+<section class="case-intro">
+  <p class="eyebrow">CASE STUDIES</p>
+
+  <div class="title-wrapper">
+    <h1>Taxes & Efficiency</h1>
+    <span class="yellow-line" aria-hidden="true"></span>
+  </div>
+
+  <p class="intro-description">
+Our achievements reflect the close collaboration between our expert teams and our esteemed clientele. 
+We cultivate a workplace that champions peak performance and guarantees client satisfaction.
+  </p>
+</section>
+
+<style>
+  .case-intro{
+      grid-column: full;
+      display: grid;
+      grid-template-columns: subgrid;
+      row-gap: var(--space-3);
+      text-align: center;
+      padding-block: var(--space-8);
+      background-color: var(--color-neutrals-50);
+  }
+
+  .case-intro > * {
+  grid-column: content;
+}
+
+  .eyebrow{
+    font-size: 16px;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+  }
+
+  .intro-description{ 
+    max-width: 600px;
+    margin-inline: auto;
+    margin-top: var(--space-5);
+    margin-bottom: 80px;
+  }
+
+.title-wrapper {
+  position: relative;
+  width: fit-content;
+  justify-self: center;
+}
+
+.yellow-line {
+  position: absolute;
+  inset-inline-end: 0;
+  inset-block-end: -0.35rem;
+  inline-size: calc(50vw + 50%);
+  block-size: 7px;
+  background-color: var(--color-action);
+  z-index: 0;
+}
+
+.case-intro h1 {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+}
+
+</style>
