@@ -24,7 +24,7 @@ const currentPath = Astro.url.pathname;
         Team
       </a>
 
-      <a href="/about" class:list={{ active: currentPath === "/about" }}>
+      <a href="/about" class:list={{ active: currentPath.startsWith("/about") }}>
         About
       </a>
     </div>
