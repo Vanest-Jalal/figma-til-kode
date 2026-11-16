@@ -1,0 +1,32 @@
+---
+// @ts-nocheck
+import StatCard from "./StatCard.astro";
+
+// Modtager statistik fra Experience.astro
+const { stats } = Astro.props;
+---
+
+<!-- Viser alle procentcirkler ved hjælp af map() -->
+<div class="stat-list">
+  {stats.map((stat) => <StatCard {...stat} />)}
+</div>
+
+<style>
+  @layer components {
+    /* Placerer procentcirklerne ved siden af hinanden */
+    .stat-list {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: var(--space-6);
+    }
+
+    /* Mobil */
+    @media (max-width: 700px) {
+      .stat-list {
+        /* Placerer procentcirklerne under hinanden */
+        flex-direction: column;
+      }
+    }
+  }
+</style>

@@ -16,14 +16,17 @@
       <span>Privacy Policy</span>
     </div>
   </div>
+</footer>
 
-  <style>
+<!-- Styling -->
+<style>
+  @layer components {
     .footer {
       width: 100vw;
       position: relative;
       left: 50%;
       margin-left: -50vw;
-      padding: var(--space-9) var(--space-6);
+      padding: var(--space-6-5) var(--space-6);
       box-sizing: border-box;
       background-color: var(--color-ui-primary);
     }
@@ -38,10 +41,8 @@
     }
 
     .footer-content p {
-      font-family: var(--font-lato);
       color: var(--color-on-ui-primary-muted);
       font-size: 0.75rem;
-      margin: 0;
       text-align: center;
     }
 
@@ -52,12 +53,9 @@
       gap: var(--space-1);
     }
 
-    .footer-links a,
     .footer-links span {
-      font-family: var(--font-lato);
       color: var(--color-on-ui-primary-muted);
       font-size: 0.75rem;
-      text-decoration: none;
     }
 
     .footer-logo {
@@ -88,5 +86,5 @@
         padding: var(--space-6) var(--space-4);
       }
     }
-  </style>
-</footer>
+  }
+</style>

@@ -21,84 +21,82 @@ const { label, value } = Astro.props;
 
 <!-- Styling -->
 <style>
-  /* Procentcirklens størrelse og placering */
-  figure {
-    flex: 0 0 150px; /* Hver cirkel får en fast bredde på 150px */
-    --value-string: attr(data-value);
-    display: grid;
-    grid: "stack";
-    place-items: center;
-    container: stat / inline-size;
-  }
-
-  /* Viser procenttallet i midten af cirklen */
-  figure::after {
-    content: var(--value-string) "%";
-    grid-area: stack;
-    font-size: 30cqw;
-    font-weight: 700;
-  }
-
-  /* Placerer SVG-cirklen og drejer startpunktet */
-  svg {
-    grid-area: stack;
-    rotate: z -90deg;
-  }
-
-  /* Cirklens baggrund */
-  .track {
-    stroke: var(--color-yellow-700);
-  }
-
-  /* Fælles styling for cirklerne */
-  .track,
-  .progress {
-    cx: 50;
-    cy: 50;
-    r: 46;
-    fill: none;
-    stroke-width: 4;
-  }
-
-  /* Viser hvor stor en procentdel cirklen er fyldt */
-  .progress {
-    stroke: var(--color-surface-primary);
-    stroke-dasharray: 100.1;
-    stroke-dashoffset: 100;
-    stroke-linecap: round;
-    transition: stroke-dashoffset 1.5s ease;
-  }
-
-  /* Markering på cirklen */
-  .marker {
-    fill: var(--color-ui-primary);
-    offset-path: circle(46px at 50px 50px);
-    /* Prikken starter ved 0 % og animeres med JavaScript */
-    offset-distance: 0%;
-    transition: offset-distance 1.5s ease;
-  }
-
-  /* Teksten under procentcirklerne */
-  figcaption {
-    font-family: var(--font-cabin);
-    font-size: 1.5625rem; /* 25px fra Figma */
-    font-weight: 600;
-    line-height: 1.16;
-    color: var(--color-text);
-    text-align: center;
-  }
-
-  /* Mobilversion af procentcirklerne */
-  @media (max-width: 700px) {
+  @layer components {
+    /* Procentcirklens størrelse og placering */
     figure {
-      /* Fjerner den faste flex-størrelse fra desktop */
-      flex: none;
+      flex: 0 0 150px; /* Hver cirkel får en fast bredde på 150px */
+      --value-string: attr(data-value);
+      display: grid;
+      grid: "stack";
+      place-items: center;
+      container: stat / inline-size;
+    }
 
-      /* Giver alle cirkler samme bredde */
-      width: 150px;
+    /* Viser procenttallet i midten af cirklen */
+    figure::after {
+      content: var(--value-string) "%";
+      grid-area: stack;
+      font-size: 30cqw;
+      font-weight: 700;
+    }
 
-      /* Fjerner browserens standardafstand omkring figure */
-      margin: 0;
+    /* Placerer SVG-cirklen og drejer startpunktet */
+    svg {
+      grid-area: stack;
+      rotate: z -90deg;
+    }
+
+    /* Cirklens baggrund */
+    .track {
+      stroke: var(--color-yellow-700);
+    }
+
+    /* Fælles styling for cirklerne */
+    .track,
+    .progress {
+      cx: 50;
+      cy: 50;
+      r: 46;
+      fill: none;
+      stroke-width: 4;
+    }
+
+    /* Viser hvor stor en procentdel cirklen er fyldt */
+    .progress {
+      stroke: var(--color-surface-primary);
+      stroke-dasharray: 100.1;
+      stroke-dashoffset: 100;
+      stroke-linecap: round;
+      transition: stroke-dashoffset 1.5s ease;
+    }
+
+    /* Markering på cirklen */
+    .marker {
+      fill: var(--color-ui-primary);
+      offset-path: circle(46px at 50px 50px);
+      /* Prikken starter ved 0 % og animeres med JavaScript */
+      offset-distance: 0%;
+      transition: offset-distance 1.5s ease;
+    }
+
+    /* Teksten under procentcirklerne */
+    figcaption {
+      font-family: var(--font-cabin);
+      font-size: 1.5625rem; /* 25px fra Figma */
+      font-weight: 600;
+      line-height: 1.16;
+      color: var(--color-text);
+      text-align: center;
+    }
+
+    /* Mobil */
+    @media (max-width: 700px) {
+      figure {
+        /* Fjerner den faste flex-størrelse fra desktop */
+        flex: none;
+        /* Giver alle cirkler samme bredde */
+        width: 150px;
+      }
     }
   }
 </style>

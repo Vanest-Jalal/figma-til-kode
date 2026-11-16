@@ -1,0 +1,127 @@
+---
+import faqData from "../../data/faq.json";
+---
+
+    <section class="faq-section" aria-labelledby="faq-title">
+        <div class="faq-inner">
+        <p class="eyebrow">FAQ</p>
+        <h2 id="faq-title">Customer Questions</h2>
+         <div class="faq">
+
+
+{faqData.faq.map((item, index) => (
+  <details class="faq-item" open={index === 1}>
+      <summary class="faq-question">
+        {item.question}
+      </summary>
+      <div class="faq-answer">
+  {item.answer.split("\n\n").map((paragraph) => (
+    <p>{paragraph}</p>
+  ))}
+</div>
+    </details>
+  ))}
+</div>
+ </div>
+    </section>
+
+<style>
+  @layer components {
+    .faq {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      width: 100%;
+      max-width: 720px;
+      margin-inline: auto;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--color-neutrals-200);
+    }
+
+    .faq-section{
+        grid-column: full;
+        display: grid;
+        grid-template-columns: subgrid;
+        padding-block: var(--space-8);
+        
+    }
+
+    .faq-inner {
+        grid-column: content;
+        width: 100%;
+        max-width: 1000px;
+        justify-self: center;
+        text-align: center;
+        border-radius: 30px;
+        background: var(--color-surface-secondary);
+        padding: var(--space-8);
+    }
+
+    .faq-inner h2 {
+       margin-block-end: var(--space-6);
+    }
+
+    .faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  list-style: none;
+  font-size: 20px;
+   padding-block: var(--space-4);
+
+   font-family: var(--font-cabin);
+   font-weight: 500;
+   line-height: 1.16;
+}
+
+.faq-question::after {
+  content: "+";
+  font-size: 24px;
+  font-weight: 400;
+  flex-shrink: 0;
+}
+
+.faq-item[open] .faq-question::after {
+  content: "−";
+}
+
+.faq-answer {
+  color: var(--color-text-muted);
+  font-family: var(--font-lato);
+  font-size: 16px;
+  line-height: 1.475;
+  padding-bottom: var(--space-4);
+}
+
+.faq-answer p {
+  margin: 0;
+}
+
+.faq-answer p + p {
+  margin-top: var(--space-3);
+}
+
+@media (max-width: 600px) {
+  .faq-inner {
+    padding: var(--space-4);
+  }
+
+  .faq-inner h2 {
+    font-size: clamp(24px, 7vw, 36px);
+  }
+
+  .faq-question {
+    gap: var(--space-3);
+    font-size: 16px;
+  }
+}
+  }
+
+
+
+  
+</style>
+    

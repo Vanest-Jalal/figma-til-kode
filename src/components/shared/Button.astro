@@ -1,0 +1,108 @@
+---
+import ArrowRight from "@icons/arrow--right.svg";
+import ArrowLeft from "@icons/arrow-left.svg";
+
+// Henter knappens variant, pilens retning og eventuelt link
+const {
+  variant = "primary",
+  showArrow = false,
+  arrowDirection = "right",
+  href,
+} = Astro.props;
+---
+
+{
+  href ? (
+    <a href={href} class={`button ${variant}`}>
+      {showArrow && arrowDirection === "left" && <ArrowLeft />}
+      <slot />
+      {showArrow && arrowDirection === "right" && <ArrowRight />}
+    </a>
+  ) : (
+    <button type="button" class={`button ${variant}`}>
+      {showArrow && arrowDirection === "left" && <ArrowLeft />}
+      <slot />
+      {showArrow && arrowDirection === "right" && <ArrowRight />}
+    </button>
+  )
+}
+
+<!-- Styling  -->
+<style>
+  @layer components {
+    .button {
+      /* Fælles styling til både links og knapper */
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      padding: var(--space-3) var(--space-5);
+      font-family: var(--font-lato);
+      font-weight: 700;
+      font-size: inherit;
+      text-decoration: none;
+      border: none;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    /* Primary button */
+    .button.primary {
+      background-color: var(--color-action);
+      color: var(--color-text);
+    }
+
+    /* Secondary button */
+    .button.secondary {
+      background-color: transparent;
+      color: var(--color-on-ui-primary);
+      border: 1px solid var(--color-on-ui-primary);
+    }
+
+    /* Text button */
+    .button.text {
+      background-color: transparent;
+      color: var(--color-action);
+      padding: 0;
+      border-radius: 0;
+      text-decoration: underline;
+    }
+
+    /* Lys knap til mørke baggrunde */
+    .button.light {
+      background-color: var(--color-on-ui-primary);
+      color: var(--color-text);
+      padding: 0.9375rem 2.125rem; /* 15px 34px fra Figma */
+      font-size: 1.125rem;
+      font-weight: 600;
+      line-height: 1.6;
+    }
+
+    /* Mørk knap til lyse baggrunde */
+    .button.dark {
+      background-color: var(--color-ui-primary);
+      color: var(--color-on-ui-primary);
+    }
+
+    /* Styling af pil */
+    .button :global(svg) {
+      width: 16px;
+      height: auto;
+      stroke-width: 2px;
+      flex-shrink: 0;
+    }
+
+    /* Sort tekstknap til lyse baggrunde */
+    .button.text-dark {
+      background-color: transparent;
+      color: var(--color-text);
+      padding: 0;
+      border-radius: 0;
+      text-decoration: none;
+      font-size: 1.125rem; /* 18px fra Figma */
+      font-weight: 600;
+      line-height: 1.6;
+    }
+  }
+</style>

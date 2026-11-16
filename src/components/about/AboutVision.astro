@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import visionImage from "../../assets/images/about-vision.jpg";
 import Checkmark from "../../icons/checkmark.svg";
+
 ---
 
 <section class="about-vision">
@@ -127,13 +128,18 @@ import Checkmark from "../../icons/checkmark.svg";
   justify-self: center;
 }
 
+
+
 @media (max-width: 750px) {
   .vision-inner {
     grid-template-columns: minmax(0, 1fr);
+    
   }
 
   .vision-image {
     margin-inline: auto;
+    max-width: 90%;
+    
   }
 
   .vision-content h2 {
