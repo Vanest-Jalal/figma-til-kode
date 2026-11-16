@@ -2,6 +2,13 @@
 
 **Gruppemedlemmer:** Katrine Bruhn og Vanest Jalal
 
+## Indledning - refleksion over tidligere feedback
+Da det er anden gang, vi arbejder med projektet, har vi været særligt opmærksom på feedbacken fra sidste gang. Vi har haft fokus på at anvende flow-space, subgrid, design tokens og container queries, hvor det giver mening i løsningen.
+
+Vi har desuden arbejdet med at skabe en mere ensartet og vedligeholdelsesvenlig kodestruktur ved at genbruge komponenter, anvende fælles styling og undgå unødvendige gentagelser i CSS.
+
+Undervejs har vi fået en bedre forståelse for, hvordan moderne CSS-teknikker kan bruges til at skabe fleksible og responsive layouts, der samtidig følger Figma-designet.
+
 ## Eksempel 1: Genbrugelige komponenter og fælles styling
 
 ### Hvor og hvorfor?
@@ -126,11 +133,11 @@ Under kodegennemgangen fjernede vi blandt andet overflødig styling af en sektio
 
 ## Brug af AI
 
-Vi har brugt AI som hjælp til at forstå tekniske løsninger, opdele arbejdet i komponenter, finde CSS-løsninger og gennemgå vores kode.
+Vi har brugt AI som hjælp til at forstå tekniske løsninger, opdele arbejdet, finde CSS-løsninger og gennemgå vores kode.
 
 AI har blandt andet hjulpet med forslag til det dekorative grid-mønster, genbrug af Button-komponenten, fejlhåndtering af API-kald og løsning af merge-konflikter.
 
-Vi har ikke ukritisk anvendt alle forslag. Vi har tilpasset løsningerne til vores eksisterende kode, design tokens og Figma-design. Vi har også fravalgt ekstra funktionalitet, når den ikke var nødvendig for opgaven.
+Vi har har været kritiske i alle anvendte forslag. Vi har tilpasset løsningerne til vores eksisterende kode, design tokens og Figma-design. 
 
 Vi har kontrolleret løsningerne ved at sammenligne hjemmesiden med Figma, teste funktionaliteten i browseren og køre npm run build.
 
